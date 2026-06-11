@@ -6,6 +6,7 @@ import Chatbot from './components/Chatbot';
 import WhatsAppCTA from './components/WhatsAppCTA';
 import Gallery from './components/Gallery';
 import Home from './pages/Home';
+import Contact from './pages/Contact';
 import ErrorBoundary from './components/ErrorBoundary';
 
 function AppContent() {
@@ -19,6 +20,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </ErrorBoundary>
       </div>

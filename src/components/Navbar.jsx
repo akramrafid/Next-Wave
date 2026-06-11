@@ -45,7 +45,7 @@ const Navbar = () => {
           <a href="#services" onClick={(e) => handleNavClick(e, '#services')} className="hover:text-nw-blue transition-colors cursor-pointer">Services</a>
           <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-nw-blue transition-colors cursor-pointer">About</a>
           <Link to="/gallery" className="hover:text-nw-blue transition-colors cursor-pointer">Gallery</Link>
-          <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="hover:text-nw-blue transition-colors cursor-pointer">Contact</a>
+          <Link to="/contact" className="hover:text-nw-blue transition-colors cursor-pointer">Contact</Link>
         </div>
         
         <div className="flex items-center gap-2 md:gap-4 shrink-0">
@@ -72,7 +72,7 @@ const Navbar = () => {
           <a href="#services" onClick={(e) => handleNavClick(e, '#services')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Services</a>
           <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">About</a>
           <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Gallery</Link>
-          <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Contact</a>
+          <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Contact</Link>
         </div>
       </div>
     </>
