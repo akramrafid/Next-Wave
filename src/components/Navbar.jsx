@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +21,16 @@ const Navbar = () => {
       <nav className={`fixed top-0 left-0 right-0 w-full md:top-6 md:left-1/2 md:right-auto md:-translate-x-1/2 z-50 transition-all duration-300 md:rounded-full border-b md:border px-4 sm:px-6 md:px-8 py-3 md:py-4 flex items-center justify-between md:w-11/12 max-w-5xl ${
         scrolled ? 'bg-white/95 backdrop-blur-xl border-nw-grey/50 shadow-md' : 'bg-transparent border-transparent'
       }`}>
-        <div className="font-poppins font-extrabold text-lg sm:text-xl md:text-2xl tracking-tighter text-nw-black flex items-center shrink-0">
+        <Link to="/" className="font-poppins font-extrabold text-lg sm:text-xl md:text-2xl tracking-tighter text-nw-black flex items-center shrink-0 hover:opacity-80 transition-opacity">
           <span className="text-nw-blue mr-1">≋</span> Next Wave
-        </div>
+        </Link>
         
         <div className="hidden md:flex items-center gap-8 font-sans font-medium text-nw-black">
-          <a href="#work" className="hover:text-nw-blue transition-colors">Work</a>
-          <a href="#services" className="hover:text-nw-blue transition-colors">Services</a>
-          <a href="#about" className="hover:text-nw-blue transition-colors">About</a>
-          <a href="#contact" className="hover:text-nw-blue transition-colors">Contact</a>
+          <a href={isHome ? "#work" : "/#work"} className="hover:text-nw-blue transition-colors">Work</a>
+          <a href={isHome ? "#services" : "/#services"} className="hover:text-nw-blue transition-colors">Services</a>
+          <a href={isHome ? "#about" : "/#about"} className="hover:text-nw-blue transition-colors">About</a>
+          <Link to="/gallery" className="hover:text-nw-blue transition-colors">Gallery</Link>
+          <a href={isHome ? "#contact" : "/#contact"} className="hover:text-nw-blue transition-colors">Contact</a>
         </div>
         
         <div className="flex items-center gap-2 md:gap-4 shrink-0">
@@ -49,10 +53,11 @@ const Navbar = () => {
         isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
       }`}>
         <div className="bg-white/95 backdrop-blur-xl border border-nw-grey shadow-lg rounded-2xl p-4 flex flex-col items-center gap-4 font-sans font-medium text-nw-black">
-          <a href="#work" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Work</a>
-          <a href="#services" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Services</a>
-          <a href="#about" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>About</a>
-          <a href="#contact" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <a href={isHome ? "#work" : "/#work"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Work</a>
+          <a href={isHome ? "#services" : "/#services"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Services</a>
+          <a href={isHome ? "#about" : "/#about"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>About</a>
+          <Link to="/gallery" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
+          <a href={isHome ? "#contact" : "/#contact"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Contact</a>
         </div>
       </div>
     </>
