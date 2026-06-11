@@ -70,7 +70,7 @@ const Gallery = () => {
         shuffled.map((img) => {
           return new Promise((resolve) => {
             const image = new Image();
-            image.src = `/Gallery/${img}`;
+            
             image.onload = () => {
               const ratio = image.width / image.height;
               let orientation = 'square';
@@ -79,9 +79,13 @@ const Gallery = () => {
               
               resolve({ src: img, orientation });
             };
+            
             image.onerror = () => {
               resolve({ src: img, orientation: 'landscape' });
             };
+
+            // Set src AFTER attaching event listeners to ensure cached images still trigger onload
+            image.src = `/Gallery/${img}`;
           });
         })
       );
