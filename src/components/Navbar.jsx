@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
-  const isHome = location.pathname === '/';
+
+  const handleNavClick = (e, hash) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/' + hash);
+    } else {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +41,11 @@ const Navbar = () => {
         </Link>
         
         <div className="hidden md:flex items-center gap-8 font-sans font-medium text-nw-black">
-          <a href={isHome ? "#work" : "/#work"} className="hover:text-nw-blue transition-colors">Work</a>
-          <a href={isHome ? "#services" : "/#services"} className="hover:text-nw-blue transition-colors">Services</a>
-          <a href={isHome ? "#about" : "/#about"} className="hover:text-nw-blue transition-colors">About</a>
-          <Link to="/gallery" className="hover:text-nw-blue transition-colors">Gallery</Link>
-          <a href={isHome ? "#contact" : "/#contact"} className="hover:text-nw-blue transition-colors">Contact</a>
+          <a href="#work" onClick={(e) => handleNavClick(e, '#work')} className="hover:text-nw-blue transition-colors cursor-pointer">Work</a>
+          <a href="#services" onClick={(e) => handleNavClick(e, '#services')} className="hover:text-nw-blue transition-colors cursor-pointer">Services</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-nw-blue transition-colors cursor-pointer">About</a>
+          <Link to="/gallery" className="hover:text-nw-blue transition-colors cursor-pointer">Gallery</Link>
+          <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="hover:text-nw-blue transition-colors cursor-pointer">Contact</a>
         </div>
         
         <div className="flex items-center gap-2 md:gap-4 shrink-0">
@@ -53,11 +68,11 @@ const Navbar = () => {
         isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
       }`}>
         <div className="bg-white/95 backdrop-blur-xl border border-nw-grey shadow-lg rounded-2xl p-4 flex flex-col items-center gap-4 font-sans font-medium text-nw-black">
-          <a href={isHome ? "#work" : "/#work"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Work</a>
-          <a href={isHome ? "#services" : "/#services"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Services</a>
-          <a href={isHome ? "#about" : "/#about"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>About</a>
-          <Link to="/gallery" className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
-          <a href={isHome ? "#contact" : "/#contact"} className="hover:text-nw-blue transition-colors py-2 w-full text-center" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <a href="#work" onClick={(e) => handleNavClick(e, '#work')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Work</a>
+          <a href="#services" onClick={(e) => handleNavClick(e, '#services')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Services</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">About</a>
+          <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Gallery</Link>
+          <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="hover:text-nw-blue transition-colors py-2 w-full text-center cursor-pointer">Contact</a>
         </div>
       </div>
     </>

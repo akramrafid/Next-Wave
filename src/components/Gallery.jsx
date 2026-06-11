@@ -59,8 +59,10 @@ const shuffleArray = (array) => {
 const Gallery = () => {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when entering gallery page
     const shuffled = shuffleArray(imageNames);
     
     const loadImages = async () => {
@@ -84,6 +86,7 @@ const Gallery = () => {
         })
       );
       setImages(loadedImages);
+      setLoading(false);
     };
 
     loadImages();
@@ -103,7 +106,7 @@ const Gallery = () => {
 
 
   return (
-    <section id="gallery" className="py-20 bg-nw-white">
+    <section id="gallery" className="pt-32 pb-20 md:pt-40 bg-nw-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
           <div>
@@ -119,8 +122,13 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-[250px] lg:auto-rows-[300px] grid-flow-dense">
-          {images.map((imgObj, index) => {
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-nw-blue"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-[250px] lg:auto-rows-[300px] grid-flow-dense">
+            {images.map((imgObj, index) => {
             let spanClasses = "col-span-1 row-span-1";
             
             if (imgObj.orientation === 'portrait') {
@@ -149,6 +157,7 @@ const Gallery = () => {
             );
           })}
         </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}
