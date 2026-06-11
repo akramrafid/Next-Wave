@@ -18,8 +18,13 @@ Background Info about Next Wave:
 - Timelines & Onboarding: Onboarding takes 1-2 weeks. Campaigns go live 48-72 hours after blueprint approval.
 - Security & Ownership: 100% GDPR/CCPA compliant. Clients own their ad accounts and creative assets forever.
 
+Basic Pricing & Rates:
+- Dollar Rate: ৳155 per dollar
+- Minimum Dollar Spend: $30
+- Per Dollar Cost for Follower: $0.2 – $0.10
+
 IMPORTANT: Do NOT use any Markdown formatting in your response. Do not use asterisks (* or **) for bold text or bullet points. Provide plain text only.
-You must answer questions related to marketing, business, and any questions about Next Wave agency itself (such as our location, services, operations, etc.). Do not answer questions that are completely unrelated to these topics. If unrelated, politely redirect them to marketing or Next Wave topics in both languages.`;
+You must answer questions related to marketing, business, pricing, and any questions about Next Wave agency itself (such as our location, services, operations, etc.). Do not answer questions that are completely unrelated to these topics. If unrelated, politely redirect them to marketing or Next Wave topics in both languages.`;
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,16 +70,12 @@ export default function Chatbot() {
     setAttachment(null);
   };
 
-  const handleSend = async (e) => {
-    e.preventDefault();
-    if ((!input.trim() && !attachment) || isLoading) return;
-
-    const userMessageText = input.trim();
-    const currentAttachment = attachment;
+  const sendMessage = async (textToSend, attachToSend = null) => {
+    if ((!textToSend.trim() && !attachToSend) || isLoading) return;
 
     setInput('');
     setAttachment(null);
-    setMessages(prev => [...prev, { role: 'user', content: userMessageText, attachment: currentAttachment?.url }]);
+    setMessages(prev => [...prev, { role: 'user', content: textToSend, attachment: attachToSend?.url }]);
     setIsLoading(true);
 
     try {
@@ -96,11 +97,11 @@ export default function Chatbot() {
       ];
 
       // Format current message
-      let currentMessageContent = userMessageText;
-      if (currentAttachment) {
+      let currentMessageContent = textToSend;
+      if (attachToSend) {
         currentMessageContent = [
-          { type: "text", text: userMessageText || "Please analyze this image related to our marketing." },
-          { type: "image_url", image_url: { url: currentAttachment.url } }
+          { type: "text", text: textToSend || "Please analyze this image related to our marketing." },
+          { type: "image_url", image_url: { url: attachToSend.url } }
         ];
       }
       
@@ -140,16 +141,27 @@ export default function Chatbot() {
     }
   };
 
+  const handleSend = (e) => {
+    e.preventDefault();
+    sendMessage(input.trim(), attachment);
+  };
+
+  const suggestedQuestions = [
+    "How much is the dollar rate?",
+    "Minimum dollar spends?",
+    "Per dollar cost for follower?"
+  ];
+
   return (
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 p-4 bg-nw-blue text-nw-white rounded-full shadow-lg hover:bg-opacity-90 transition-all z-50 ${isOpen ? 'scale-0' : 'scale-100'}`}
+        className={`fixed bottom-24 right-6 p-4 bg-nw-blue text-nw-white rounded-full shadow-lg hover:bg-opacity-90 transition-all z-50 ${isOpen ? 'scale-0' : 'scale-100'}`}
       >
         <MessageSquare size={24} />
       </button>
 
-      <div className={`fixed bottom-6 right-6 w-96 h-[500px] max-h-[80vh] bg-nw-white rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 z-50 origin-bottom-right border border-nw-grey/20 ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'}`}>
+      <div className={`fixed bottom-24 right-6 w-96 h-[500px] max-h-[80vh] bg-nw-white rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 z-50 origin-bottom-right border border-nw-grey/20 ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'}`}>
         
         <div className="bg-nw-black text-nw-white p-4 flex justify-between items-center z-10 rounded-t-2xl">
           <div className="flex items-center gap-3">
@@ -172,6 +184,22 @@ export default function Chatbot() {
               </div>
             </div>
           ))}
+          {messages.length === 1 && (
+            <div className="flex flex-col gap-2 mt-4 max-w-[85%] animate-[fade-in_0.5s_ease-out]">
+              <p className="text-xs text-nw-grey font-semibold mb-1">Suggested questions:</p>
+              <div className="flex flex-wrap gap-2">
+                {suggestedQuestions.map((q, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => sendMessage(q)}
+                    className="bg-white border border-nw-blue/30 text-nw-blue text-xs px-3 py-1.5 rounded-full hover:bg-nw-blue hover:text-white transition-colors shadow-sm text-left"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {isLoading && (
             <div className="flex justify-start">
               <div className="bg-nw-white border border-nw-grey/20 text-nw-black rounded-2xl rounded-tl-none p-3 shadow-sm">

@@ -14,6 +14,7 @@ import Protocol from './components/Protocol';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
+import WhatsAppCTA from './components/WhatsAppCTA';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Protocol />
       <CTA />
       <Footer />
+      <WhatsAppCTA />
       <Chatbot />
     </main>
   );
