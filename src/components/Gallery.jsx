@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const imageNames = [
   "541466552_122171841014575062_8137509910886669250_n (1).jpg",
@@ -62,6 +63,28 @@ const Gallery = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Clean up any residual GSAP ScrollTriggers from the Home page
+    try {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
+      ScrollTrigger.clearScrollMemory();
+    } catch (e) {
+      // Ignore cleanup errors - DOM elements may already be gone
+    }
+    
+    // Remove any leftover pin-spacer wrapper elements
+    try {
+      document.querySelectorAll('.pin-spacer').forEach(el => {
+        const child = el.children[0];
+        if (child) {
+          child.removeAttribute('style');
+          el.parentNode?.insertBefore(child, el);
+        }
+        el.remove();
+      });
+    } catch (e) {
+      // Ignore cleanup errors
+    }
+
     window.scrollTo(0, 0); // Scroll to top when entering gallery page
     const shuffled = shuffleArray(imageNames);
     

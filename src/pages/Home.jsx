@@ -31,7 +31,28 @@ const Home = () => {
 
   useEffect(() => {
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      try {
+        // Kill all ScrollTriggers with revert=true to undo pin spacers and inline styles
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
+        // Clear any cached scroll values
+        ScrollTrigger.clearScrollMemory();
+      } catch (e) {
+        // Ignore - DOM elements may already be unmounted
+      }
+      
+      try {
+        // Manually remove any leftover GSAP pin-spacer elements
+        document.querySelectorAll('.pin-spacer').forEach(el => {
+          const child = el.children[0];
+          if (child) {
+            child.removeAttribute('style');
+            el.parentNode?.insertBefore(child, el);
+          }
+          el.remove();
+        });
+      } catch (e) {
+        // Ignore cleanup errors
+      }
     };
   }, []);
 

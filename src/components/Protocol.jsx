@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,29 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 const Protocol = () => {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const panels = gsap.utils.toArray('.protocol-panel');
-    
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: () => "+=" + (panels.length * window.innerHeight),
-        scrub: true,
-        pin: true,
-        anticipatePin: 1
-      }
-    });
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panels = gsap.utils.toArray('.protocol-panel');
+      
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: () => "+=" + (panels.length * window.innerHeight),
+          scrub: true,
+          pin: true,
+          anticipatePin: 1
+        }
+      });
 
-    panels.forEach((panel, i) => {
-      if (i > 0) {
-        tl.fromTo(panel, { yPercent: 100 }, { yPercent: 0, ease: "none" }, i - 1);
-      }
-    });
+      panels.forEach((panel, i) => {
+        if (i > 0) {
+          tl.fromTo(panel, { yPercent: 100 }, { yPercent: 0, ease: "none" }, i - 1);
+        }
+      });
+    }, containerRef);
     
-    return () => {
-      if (tl.scrollTrigger) tl.scrollTrigger.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (

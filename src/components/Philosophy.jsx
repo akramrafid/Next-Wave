@@ -9,22 +9,26 @@ const Philosophy = () => {
   const revealRef = useRef(null);
 
   useEffect(() => {
-    const words = revealRef.current.querySelectorAll('.reveal-word');
-    
-    gsap.fromTo(words, 
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, 
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 60%",
+    const ctx = gsap.context(() => {
+      const words = revealRef.current.querySelectorAll('.reveal-word');
+      
+      gsap.fromTo(words, 
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1, 
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          }
         }
-      }
-    );
+      );
+    }, sectionRef);
+    
+    return () => ctx.revert();
   }, []);
 
   const contrastStatement = "momentum that converts.";
