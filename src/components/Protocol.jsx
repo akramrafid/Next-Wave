@@ -10,7 +10,7 @@ const Protocol = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray('.protocol-panel');
-      
+
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -28,13 +28,13 @@ const Protocol = () => {
         }
       });
     }, containerRef);
-    
+
     return () => ctx.revert();
   }, []);
 
   return (
     <section ref={containerRef} className="relative w-full h-[100vh] bg-nw-white overflow-hidden">
-      
+
       {/* Discover */}
       <div className="protocol-panel absolute inset-0 bg-nw-light flex flex-col md:flex-row items-center justify-center p-8 md:p-24 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
         <div className="w-full md:w-1/2 pr-0 md:pr-16 mb-12 md:mb-0">
@@ -65,7 +65,7 @@ const Protocol = () => {
         </div>
         <div className="w-full md:w-1/2 flex justify-center relative overflow-hidden h-64">
           <div className="grid grid-cols-5 gap-2 w-full h-full opacity-20">
-            {Array.from({length: 25}).map((_, i) => (
+            {Array.from({ length: 25 }).map((_, i) => (
               <div key={i} className="bg-nw-blue rounded-sm" />
             ))}
           </div>
@@ -90,10 +90,10 @@ const Protocol = () => {
         </div>
         <div className="w-full md:w-1/2 flex justify-center">
           <svg className="w-full max-w-md h-32 text-nw-blue" viewBox="0 0 500 100" preserveAspectRatio="none">
-            <polyline 
-              points="0,50 100,50 120,20 140,80 160,50 340,50 360,10 380,90 400,50 500,50" 
-              fill="none" 
-              stroke="currentColor" 
+            <polyline
+              points="0,50 100,50 120,20 140,80 160,50 340,50 360,10 380,90 400,50 500,50"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="4"
               strokeLinejoin="round"
               strokeLinecap="round"
