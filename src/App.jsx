@@ -12,7 +12,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 function AppContent() {
   const location = useLocation();
-  
+
   return (
     <main className="bg-nw-white min-h-screen flex flex-col">
       <TopBar />
