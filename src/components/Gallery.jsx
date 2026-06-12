@@ -145,7 +145,7 @@ const Gallery = () => {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-gray-500 max-w-sm text-right hidden md:block">
-            Captured moments from our desert trips and scenic routes.
+            Behind-the-scenes moments, campaign launches, and the creative energy that drives NextWave forward.
           </p>
         </div>
 

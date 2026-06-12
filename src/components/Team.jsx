@@ -32,7 +32,7 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <section className="bg-nw-white w-full min-h-[900px] py-24 relative overflow-hidden flex flex-col items-center justify-center">
+    <section id="about" className="bg-nw-white w-full min-h-[900px] py-24 relative overflow-hidden flex flex-col items-center justify-center">
       
       {/* Massive Background Text - Pixelbasel Font */}
       <div className="absolute inset-0 flex items-start justify-center pointer-events-none z-0 overflow-hidden pt-10">

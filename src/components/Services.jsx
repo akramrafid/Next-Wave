@@ -55,7 +55,7 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section className="bg-nw-white w-full py-24 relative overflow-hidden">
+    <section id="services" className="bg-nw-white w-full py-24 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="mb-16">
           <h2 className="text-5xl md:text-6xl font-bold text-nw-black tracking-tight mb-4">

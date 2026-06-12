@@ -17,7 +17,7 @@ const row2 = allLogos.slice(19);
 
 const Clients = () => {
   return (
-    <section className="bg-nw-light w-full py-24 relative overflow-hidden">
+    <section id="work" className="bg-nw-light w-full py-24 relative overflow-hidden">
       
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 mb-16 text-center">
         <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter text-nw-black font-sans font-bold" style={{ letterSpacing: '-0.04em' }}>
