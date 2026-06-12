@@ -23,7 +23,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="px-4 py-8 md:px-8 mt-24" id="work" ref={containerRef}>
+    <section className="px-4 py-8 md:px-8 mt-24" ref={containerRef}>
       <div className="max-w-7xl mx-auto bg-[#1A1A1A] rounded-[3rem] p-8 md:p-12 lg:p-16 text-white relative overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.2)]">
 
         {/* Top Header Section */}
