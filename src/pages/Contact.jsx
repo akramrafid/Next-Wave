@@ -192,7 +192,7 @@ const Contact = () => {
         {/* ── Map ─────────────────────────────────────────────────── */}
         <div className="w-full h-[400px] md:h-[450px] rounded-[2rem] overflow-hidden shadow-sm relative group">
           <iframe
-            src="https://maps.google.com/maps?q=22.3569,91.8352&z=16&output=embed"
+            src="https://maps.google.com/maps?q=NextWave+360+Solutions,+House+66+4th+Floor,+Road+6A,+O.R.+Nizam+Road,+Chattogram+4223,+Bangladesh&z=16&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0, display: 'block' }}

@@ -13,6 +13,7 @@ import FAQ from '../components/FAQ';
 import Philosophy from '../components/Philosophy';
 import Protocol from '../components/Protocol';
 import CTA from '../components/CTA';
+import GoogleReviews from '../components/GoogleReviews';
 
 const Home = () => {
   const location = useLocation();
@@ -69,6 +70,7 @@ const Home = () => {
       <FAQ />
       <Philosophy />
       <Protocol />
+      <GoogleReviews />
       <CTA />
     </>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import WhatsAppCTA from './components/WhatsAppCTA';
@@ -14,6 +15,7 @@ function AppContent() {
   
   return (
     <main className="bg-nw-white min-h-screen flex flex-col">
+      <TopBar />
       <Navbar />
       <div className="flex-grow">
         <ErrorBoundary resetKey={location.pathname}>
