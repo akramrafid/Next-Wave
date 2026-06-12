@@ -73,14 +73,6 @@ const Team = () => {
                 className="absolute inset-0 w-full h-full object-cover object-top will-change-transform"
               />
 
-              {/* Fading Blur Layer */}
-              <div 
-                className="absolute inset-0 backdrop-blur-2xl pointer-events-none transform-gpu"
-                style={{
-                  WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%)',
-                  maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%)'
-                }}
-              />
 
               {/* Fading Dark Gradient Layer */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/60 to-transparent pointer-events-none" />
