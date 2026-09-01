@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Send } from 'lucide-react';
+import { ArrowUpRight, Send, Mail, Phone, MapPin, Globe } from 'lucide-react';
+
+const serviceOptions = [
+  "Strategy & Planning",
+  "Creative & Brand Design",
+  "Digital & Performance Marketing",
+  "Production & Activation",
+  "PR & Corporate Communications",
+  "Integrated 360 Partnership"
+];
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    service: 'Strategy & Planning',
+    message: ''
+  });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -25,172 +41,287 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); }, 1800);
+    setTimeout(() => {
+      setSending(false);
+      setSent(true);
+    }, 1200);
   };
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-20 font-sans">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div className="bg-[#070707] text-white min-h-screen pt-36 pb-24 font-sans border-b border-white/10">
+      
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#0E9ED9]/5 rounded-full filter blur-[160px] pointer-events-none" />
 
-        {/* ── Hero Banner ─────────────────────────────────────────── */}
-        <div
-          className="w-full h-[300px] md:h-[420px] rounded-[2.5rem] bg-cover bg-center flex items-end p-8 md:p-16 mb-16 relative overflow-hidden"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      <div className="container mx-auto px-6 sm:px-10 lg:px-14 max-w-[1560px] relative z-10">
 
-          {/* Blue glow accent */}
-          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-25 blur-3xl" style={{ background: '#0E9ED9', transform: 'translate(-30%, 30%)' }} />
-
-          <div className="relative z-10 w-full flex justify-between items-end">
-            <h1
-              className="text-white font-bold leading-none"
-              style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(52px, 7vw, 88px)', letterSpacing: '-2px' }}
-            >
-              Contacts
-            </h1>
-            <div className="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 text-white/80 text-sm">
-              <span className="opacity-60">Home</span>
-              <span className="opacity-40 mx-1">/</span>
-              <span className="font-medium text-white">Contacts</span>
-            </div>
+        {/* ── Header Block ────────────────────────────────── */}
+        <div className="max-w-4xl mb-16 md:mb-20">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#0E9ED9] animate-pulse" />
+            <span className="text-xs md:text-sm font-mono tracking-[0.25em] text-[#9DD6F3] uppercase font-semibold">
+              INITIATE ENGAGEMENT
+            </span>
           </div>
+          <h1 className="font-poppins font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase tracking-tight leading-none mb-6">
+            LET'S TALK.
+          </h1>
+          <p className="text-gray-400 text-lg sm:text-xl font-sans leading-relaxed max-w-2xl">
+            Tell us about your brand objectives, business challenges or expansion plans, and our senior leadership team will initiate the strategic dialogue.
+          </p>
         </div>
 
-        {/* ── Two-column content ───────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row gap-16 mb-24">
+        {/* ── Two-Column Layout: Contact Details & Simplified Form ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-24 items-start">
 
-          {/* Left – Contact Info */}
-          <div className="w-full lg:w-1/2">
-            <p className="text-xs font-mono tracking-[0.2em] text-gray-400 mb-5 uppercase">/ get in touch /</p>
+          {/* Left Column: Official Contact & Headquarters Info */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-10">
+            <div>
+              <h3 className="font-poppins font-bold text-2xl text-white mb-4">
+                NextWave 360 Solutions
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                Headquartered in Chittagong, serving ambitious corporate clients, national retail leaders, and global enterprise ventures.
+              </p>
 
-            <h2
-              className="font-bold text-nw-black leading-tight mb-6"
-              style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(30px, 3.5vw, 50px)', letterSpacing: '-1px' }}
-            >
-              We are always ready to help you and answer your questions
-            </h2>
-
-            <p className="text-gray-500 text-base leading-relaxed mb-12 max-w-sm">
-              Whether you're looking to launch your brand, scale campaigns, or build a digital presence — our team is ready to move with you.
-            </p>
-
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10">
-              <div>
-                <h4 className="font-semibold text-nw-black text-sm mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Call Center</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">+880 1700 000000<br />+880 1800 000000</p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-nw-black text-sm mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Our Location</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  House 66 (4th floor), Road 06,<br />
-                  O. R. Nizam Road R/A, Circle,<br />
-                  Chattogram 4203
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-nw-black text-sm mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Email</h4>
-                <p className="text-gray-500 text-sm">hello@nextwave360.com</p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-nw-black text-sm mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Social network</h4>
-                <div className="flex items-center gap-3 mt-1">
-                  <a href="#" className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-nw-blue transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                  </a>
-                  <a href="#" className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-nw-blue transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  </a>
-                  <a href="#" className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-nw-blue transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                  </a>
-                  <a href="#" className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-nw-blue transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
-                  </a>
+              <div className="space-y-6 border-t border-white/10 pt-8">
+                
+                {/* Address */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 text-[#0E9ED9] flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-poppins font-bold text-xs uppercase text-[#9DD6F3] tracking-wider mb-1">
+                      Headquarters
+                    </h4>
+                    <p className="text-gray-300 text-sm leading-relaxed font-medium">
+                      House 66, Road 06, O. R. Nizam R/A,<br />
+                      GEC Circle, Chittagong, Bangladesh
+                    </p>
+                  </div>
                 </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 text-[#0E9ED9] flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-poppins font-bold text-xs uppercase text-[#9DD6F3] tracking-wider mb-1">
+                      Direct Email
+                    </h4>
+                    <a 
+                      href="mailto:info.nextwaves@gmail.com" 
+                      className="text-white hover:text-[#9DD6F3] text-sm font-semibold transition-colors"
+                    >
+                      info.nextwaves@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 text-[#0E9ED9] flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-poppins font-bold text-xs uppercase text-[#9DD6F3] tracking-wider mb-1">
+                      Phone / WhatsApp
+                    </h4>
+                    <a 
+                      href="tel:+8801711204614" 
+                      className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                    >
+                      +880 1711-204614
+                    </a>
+                  </div>
+                </div>
+
+                {/* Website */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 text-[#0E9ED9] flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
+                    <Globe size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-poppins font-bold text-xs uppercase text-[#9DD6F3] tracking-wider mb-1">
+                      Digital Domain
+                    </h4>
+                    <p className="text-[#0E9ED9] text-sm font-mono font-semibold">
+                      nextwaves.agency
+                    </p>
+                  </div>
+                </div>
+
               </div>
+            </div>
+
+            <div className="bg-[#111111] text-white p-6 rounded-2xl border border-white/10 shadow-xl">
+              <span className="text-xs font-mono text-[#9DD6F3] uppercase tracking-widest block mb-1 font-semibold">
+                RESPONSE PROTOCOL
+              </span>
+              <p className="text-xs text-gray-300 leading-relaxed">
+                All client enquiries are reviewed directly by agency strategy leadership within 24 business hours.
+              </p>
             </div>
           </div>
 
-          {/* Right – Form Card */}
-          <div className="w-full lg:w-1/2">
-            <div className="bg-[#F8F9FA] rounded-[2rem] p-8 md:p-12 h-full flex flex-col justify-center">
-              <h3 className="text-2xl font-bold text-nw-black mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Get In Touch</h3>
+          {/* Right Column: Clean Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-[#111111] rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl">
+              
+              <h3 className="text-2xl sm:text-3xl font-poppins font-bold text-white tracking-tight mb-2">
+                Start a Conversation
+              </h3>
               <p className="text-gray-400 text-sm mb-8">
-                Define your goals and identify areas where Next Wave can add value to your business.
+                Please complete the details below to schedule an initial consultation.
               </p>
 
               {sent ? (
-                <div className="flex flex-col items-center justify-center py-12 gap-4">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center bg-nw-blue">
-                    <Send size={28} className="text-white" />
+                <div className="flex flex-col items-center justify-center py-16 gap-4 text-center">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white text-black shadow-lg">
+                    <Send size={26} />
                   </div>
-                  <p className="font-bold text-nw-black text-lg" style={{ fontFamily: "'Poppins', sans-serif" }}>Message sent!</p>
-                  <p className="text-gray-400 text-sm text-center">We'll get back to you within 24 hours.</p>
-                  <button onClick={() => { setSent(false); setFormData({ name: '', email: '', subject: '', message: '' }); }}
-                    className="mt-4 text-sm underline text-gray-400 hover:text-nw-blue transition-colors">Send another</button>
+                  <h4 className="font-poppins font-bold text-white text-2xl">Conversation Initiated</h4>
+                  <p className="text-gray-400 text-sm max-w-sm">
+                    Thank you. We have received your details and our team will get in touch with you shortly.
+                  </p>
+                  <button 
+                    onClick={() => {
+                      setSent(false);
+                      setFormData({ name: '', company: '', email: '', phone: '', service: 'Strategy & Planning', message: '' });
+                    }}
+                    className="mt-6 text-xs font-poppins font-bold uppercase tracking-wider text-[#9DD6F3] hover:text-white transition-colors underline"
+                  >
+                    Submit Another Enquiry
+                  </button>
                 </div>
               ) : (
-                <form className="space-y-0" onSubmit={handleSubmit}>
-                  {[
-                    { id: 'name',    label: 'Full name',  type: 'text',  key: 'name'    },
-                    { id: 'email',   label: 'Email',      type: 'email', key: 'email'   },
-                    { id: 'subject', label: 'Subject',    type: 'text',  key: 'subject' },
-                  ].map(({ id, label, type, key }) => (
-                    <div key={id} className="border-b border-gray-200 py-4">
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  
+                  {/* Field 1 & 2: NAME & COMPANY */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                        NAME *
+                      </label>
                       <input
-                        id={id}
-                        type={type}
-                        placeholder={label}
-                        required={id !== 'subject'}
-                        value={formData[key]}
-                        onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))}
-                        className="w-full bg-transparent text-sm text-nw-black placeholder-gray-400 focus:outline-none"
+                        type="text"
+                        required
+                        placeholder="Your full name"
+                        value={formData.name}
+                        onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors"
                       />
                     </div>
-                  ))}
-                  <div className="border-b border-gray-200 py-4">
+
+                    <div className="space-y-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                        COMPANY *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Organization name"
+                        value={formData.company}
+                        onChange={e => setFormData(p => ({ ...p, company: e.target.value }))}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Field 3 & 4: EMAIL & PHONE */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                        EMAIL *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="work@company.com"
+                        value={formData.email}
+                        onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                        PHONE
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+880 1..."
+                        value={formData.phone}
+                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                        className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Field 5: WHAT CAN WE HELP WITH? */}
+                  <div className="space-y-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                      WHAT CAN WE HELP WITH?
+                    </label>
+                    <select
+                      value={formData.service}
+                      onChange={e => setFormData(p => ({ ...p, service: e.target.value }))}
+                      className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#9DD6F3] transition-colors cursor-pointer"
+                    >
+                      {serviceOptions.map((opt, i) => (
+                        <option key={i} value={opt} className="bg-[#1a1a1a] text-white">{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Field 6: MESSAGE */}
+                  <div className="space-y-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
+                      MESSAGE *
+                    </label>
                     <textarea
-                      placeholder="Message"
                       rows={4}
                       required
+                      placeholder="Briefly describe your objectives, timelines, or requirements..."
                       value={formData.message}
                       onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                      className="w-full bg-transparent text-sm text-nw-black placeholder-gray-400 focus:outline-none resize-none"
+                      className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors resize-none"
                     />
                   </div>
 
-                  <div className="pt-8">
+                  {/* Submit Button */}
+                  <div className="pt-4">
                     <button
                       type="submit"
                       disabled={sending}
-                      className="inline-flex items-center gap-3 bg-nw-black text-white text-sm font-medium rounded-full px-8 py-4 hover:bg-nw-blue transition-colors duration-300 hover:scale-105 disabled:opacity-70 shadow-[0_4px_20px_rgba(14,158,217,0.15)]"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-200 text-black text-xs font-poppins font-bold uppercase tracking-wider rounded-xl px-10 py-4 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 cursor-pointer shadow-lg"
                     >
                       {sending ? (
                         <>
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Sending…
+                          <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                          Processing…
                         </>
                       ) : (
                         <>
-                          <ArrowRight size={16} className="text-nw-blue shrink-0" />
-                          Send a message
+                          <span>START A CONVERSATION</span>
+                          <ArrowUpRight size={16} />
                         </>
                       )}
                     </button>
                   </div>
+
                 </form>
               )}
+
             </div>
           </div>
 
         </div>
 
-        {/* ── Map ─────────────────────────────────────────────────── */}
-        <div className="w-full h-[400px] md:h-[450px] rounded-[2rem] overflow-hidden shadow-sm relative group">
+        {/* ── Map Location ────────────────────────────────────────── */}
+        <div className="w-full h-[380px] md:h-[420px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
           <iframe
             src="https://maps.google.com/maps?q=NextWave+360+Solutions,+House+66+4th+Floor,+Road+6A,+O.R.+Nizam+Road,+Chattogram+4223,+Bangladesh&z=16&output=embed"
             width="100%"
@@ -199,8 +330,8 @@ const Contact = () => {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="grayscale group-hover:grayscale-0 transition-all duration-700"
-            title="Next Wave Office Location"
+            className="grayscale invert contrast-125 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700"
+            title="NextWave 360 Solutions Location"
           />
         </div>
 

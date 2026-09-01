@@ -2,18 +2,15 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '../components/Hero';
-import Services from '../components/Services';
-import Team from '../components/Team';
-import Clients from '../components/Clients';
-import Principles from '../components/Principles';
-import Features from '../components/Features';
-import Roadmap from '../components/Roadmap';
-import WhyChooseUs from '../components/WhyChooseUs';
-import FAQ from '../components/FAQ';
 import Philosophy from '../components/Philosophy';
-import Protocol from '../components/Protocol';
+import SelectedWork from '../components/SelectedWork';
+import Services from '../components/Services';
+import Principles from '../components/Principles';
+import Industries from '../components/Industries';
+import Clients from '../components/Clients';
+import Team from '../components/Team';
+import Insights from '../components/Insights';
 import CTA from '../components/CTA';
-import GoogleReviews from '../components/GoogleReviews';
 
 const Home = () => {
   const location = useLocation();
@@ -33,16 +30,11 @@ const Home = () => {
   useEffect(() => {
     return () => {
       try {
-        // Kill all ScrollTriggers with revert=true to undo pin spacers and inline styles
         ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
-        // Clear any cached scroll values
         ScrollTrigger.clearScrollMemory();
-      } catch (e) {
-        // Ignore - DOM elements may already be unmounted
-      }
+      } catch (e) {}
       
       try {
-        // Manually remove any leftover GSAP pin-spacer elements
         document.querySelectorAll('.pin-spacer').forEach(el => {
           const child = el.children[0];
           if (child) {
@@ -51,26 +43,40 @@ const Home = () => {
           }
           el.remove();
         });
-      } catch (e) {
-        // Ignore cleanup errors
-      }
+      } catch (e) {}
     };
   }, []);
 
   return (
     <>
+      {/* 1. Understand NextWave */}
       <Hero />
-      <Services />
-      <Team />
-      <Clients />
-      <Principles />
-      <Roadmap />
-      <WhyChooseUs />
-      <Features />
-      <FAQ />
+
+      {/* 2. Positioning & Vision */}
       <Philosophy />
-      <Protocol />
-      <GoogleReviews />
+
+      {/* 3. See the Work */}
+      <SelectedWork />
+
+      {/* 4. Understand the Capabilities (The 360 Spectrum) */}
+      <Services />
+
+      {/* 5. How We Work (Strategy · Emotion · Execution) */}
+      <Principles />
+
+      {/* 6. Where We Work & Global Ambition */}
+      <Industries />
+
+      {/* 7. Trust NextWave (Clients & Partners + Separate Founder Experience) */}
+      <Clients />
+
+      {/* 8. Meet the Founder (The Thinking Behind NextWave & Leadership Quote) */}
+      <Team />
+
+      {/* 9. Thinking Beyond the Campaign (Insights) */}
+      <Insights />
+
+      {/* 10. Start a Conversation */}
       <CTA />
     </>
   );

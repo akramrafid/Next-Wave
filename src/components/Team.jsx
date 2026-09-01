@@ -1,140 +1,158 @@
 import React from 'react';
-
-const teamMembers = [
-  {
-    name: "Shahedul Islam",
-    role: "Sr. Visualizer",
-    desc: "A creative mastermind focused on stunning visuals and intuitive user experiences.",
-    imgSrc: "/Meet our team/Shahedul Islam.jpg",
-    linkedin: "#",
-    twitter: "#",
-    email: "mailto:#"
-  },
-  {
-    name: "Mohammad Abdullah Al Kaisar",
-    role: "CEO & Founder",
-    desc: "Leading the strategic vision and growth of the company with innovative ideas.",
-    imgSrc: "/Meet our team/Mohammad Abdullah Al Kaisar.jpeg",
-    linkedin: "#",
-    twitter: "#",
-    email: "mailto:#"
-  },
-  {
-    name: "Sayed Anas Ahamed",
-    role: "Media Buying Associate",
-    desc: "Data-driven media buyer optimizing campaigns for maximum return on investment.",
-    imgSrc: "/Meet our team/Sayed Anas Ahamed.jpg",
-    linkedin: "#",
-    twitter: "#",
-    email: "mailto:#"
-  }
-];
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, Mail, MessageSquareQuote } from 'lucide-react';
 
 const Team = () => {
   return (
-    <section id="about" className="bg-nw-white w-full min-h-[900px] py-24 relative overflow-hidden flex flex-col items-center justify-center">
+    <section id="about-team" className="bg-[#070707] text-white w-full py-28 md:py-36 relative overflow-hidden border-b border-white/10">
       
-      {/* Massive Background Text - Pixelbasel Font */}
-      <div className="absolute inset-0 flex items-start justify-center pointer-events-none z-0 overflow-hidden pt-10">
-        <h1 
-          className="text-black/5 leading-none text-center select-none whitespace-nowrap"
-          style={{ 
-            fontFamily: "'Pixelbasel', sans-serif", 
-            fontSize: 'clamp(120px, 25vw, 450px)',
-            letterSpacing: '-0.02em',
-            transform: 'translateY(-20%)'
-          }}
-        >
-          Next Wave
-        </h1>
-      </div>
+      {/* Background Lighting */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#0E9ED9]/5 rounded-full filter blur-[150px] pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10 w-full mt-8">
+      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10 w-full">
         
-        {/* Header Block */}
-        <div className="mb-16">
-          <p className="text-nw-black/50 text-sm mb-4 font-medium tracking-wide">Home / Teams</p>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl tracking-tighter text-nw-black mb-6" style={{ letterSpacing: '-0.04em' }}>Meet our team</h2>
-          <p className="text-nw-black/70 max-w-2xl text-base md:text-lg leading-relaxed">
-            Meet our exceptional team at Next Wave! Comprising diverse talents and expertise, we are a dedicated group committed to delivering excellence in every project.
-          </p>
+        {/* Section Header */}
+        <div className="mb-16 max-w-3xl">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#0E9ED9]" />
+            <span className="text-xs md:text-sm font-mono tracking-[0.25em] text-[#9DD6F3] uppercase font-semibold">
+              FOUNDER & LEADERSHIP
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-black tracking-tight uppercase text-white">
+            THE THINKING BEHIND NEXTWAVE
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {teamMembers.map((member, idx) => (
-            <div 
-              key={idx}
-              className="relative group bg-[#1a1a1a] rounded-[2.5rem] overflow-hidden shadow-2xl h-[550px] lg:h-[600px] w-full transition-transform duration-500 hover:-translate-y-2 border-[4px] border-[#222222] will-change-transform"
-            >
-              {/* Member Image taking full height */}
-              <img 
-                src={member.imgSrc} 
-                alt={member.name}
-                className="absolute inset-0 w-full h-full object-cover object-top will-change-transform"
-              />
-
-
-              {/* Fading Dark Gradient Layer */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/60 to-transparent pointer-events-none" />
-
-              {/* Content Container */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 pb-6 z-10">
+        {/* Founder Bio Card */}
+        <div className="bg-[#111111] rounded-3xl p-6 sm:p-8 md:p-12 lg:p-14 border border-white/10 shadow-2xl mb-16 relative overflow-hidden">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column: Portrait */}
+            <div className="lg:col-span-5 flex flex-col items-center sm:items-start">
+              <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-white/20 shadow-2xl group">
+                <img 
+                  src="/Meet our team/Mohammad Abdullah Al Kaisar.jpeg" 
+                  alt="Abdullah Al Kaisar - Founder & CEO"
+                  className="w-full h-[420px] md:h-[460px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
                 
-                {/* Name, Verified Badge, and Role */}
-                <div className="mb-3">
-                  <h3 className="text-white text-xl lg:text-2xl font-bold font-sans tracking-tight mb-1">
-                    {member.name}
+                {/* Gradient Scrim */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-black/20 to-transparent" />
+
+                {/* Bottom Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 z-10">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-white text-xl sm:text-2xl font-bold font-sans tracking-tight">
+                      ABDULLAH AL KAISAR
+                    </h3>
                     <img 
                       src="/Meet our team/Verified badge sign.png" 
-                      alt="Verified" 
-                      className="inline-block w-5 h-5 ml-1.5 align-middle -translate-y-0.5 cursor-pointer drop-shadow-sm" 
+                      alt="Verified Badge" 
+                      className="w-5 h-5 drop-shadow-sm shrink-0" 
                     />
-                  </h3>
-                  <p className="text-[#d0d0d0] text-xs md:text-sm font-semibold tracking-wide">
-                    {member.role}
+                  </div>
+                  <p className="text-[#9DD6F3] text-xs font-semibold uppercase tracking-widest font-mono">
+                    FOUNDER & CEO
                   </p>
                 </div>
+              </div>
 
-                {/* Description */}
-                <p className="text-[#a0a0a0] text-xs md:text-sm leading-relaxed mb-5 max-w-[95%]">
-                  {member.desc}
-                </p>
-
-                {/* Footer: Social Icons & Contact Button */}
-                <div className="flex justify-between items-center w-full">
-                  
-                  {/* Social Icons */}
-                  <div className="flex items-center gap-3 text-[#888888]">
-                    <a href={member.linkedin} className="hover:text-white transition-colors">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect width="4" height="12" x="2" y="9"/>
-                        <circle cx="4" cy="4" r="2"/>
-                      </svg>
-                    </a>
-                    <a href={member.twitter} className="hover:text-white transition-colors">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-                      </svg>
-                    </a>
-                    <a href={member.email} className="hover:text-white transition-colors">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                      </svg>
-                    </a>
-                  </div>
-
-                  {/* Contact Button */}
-                  <button className="bg-nw-blue text-white font-semibold text-xs px-4 py-2 rounded-full flex items-center gap-1 hover:opacity-90 transition-opacity shadow-lg">
-                    Contact <span className="text-base leading-none ml-1">+</span>
-                  </button>
-                  
+              {/* Social Connect Bar */}
+              <div className="flex items-center justify-between w-full max-w-md mt-6 px-2">
+                <div className="flex items-center gap-3">
+                  <a 
+                    href="https://linkedin.com/in/kaisar" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0E9ED9] text-white flex items-center justify-center transition-colors"
+                    title="Connect on LinkedIn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </a>
+                  <a 
+                    href="mailto:info.nextwaves@gmail.com" 
+                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0E9ED9] text-white flex items-center justify-center transition-colors"
+                    title="Email Kaisar"
+                  >
+                    <Mail size={18} />
+                  </a>
                 </div>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-gray-200 text-black text-xs font-poppins font-bold px-5 py-2.5 rounded-full uppercase tracking-wider transition-all duration-200 shadow-md"
+                >
+                  <span>Connect</span>
+                  <ArrowUpRight size={14} />
+                </Link>
               </div>
             </div>
-          ))}
+
+            {/* Right Column: Bio Narrative */}
+            <div className="lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#9DD6F3] mb-4 block font-semibold">
+                  EXECUTIVE PROFILE
+                </span>
+                
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-poppins font-black text-white tracking-tight mb-6">
+                  Bridging Strategic Acumen & Creative Precision
+                </h3>
+
+                <div className="space-y-6 text-gray-300 font-sans text-base sm:text-lg leading-relaxed">
+                  <p>
+                    Abdullah Al Kaisar is the Founder & CEO of NextWave 360 Solutions. With a background in agency leadership, marketing operations and client management, he has been directly involved in marketing engagements with leading businesses and brands across multiple sectors.
+                  </p>
+                  <p className="text-white font-medium border-l-2 border-[#0E9ED9] pl-4 py-1">
+                    He founded NextWave with the ambition of building a marketing company from Bangladesh that combines strategic thinking, creative expression and disciplined execution.
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-wider text-gray-400">
+                  10+ Years Marketing Leadership
+                </span>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 text-[#9DD6F3] hover:text-white text-xs font-poppins font-bold uppercase tracking-wider transition-colors"
+                >
+                  <span>START A CONVERSATION</span>
+                  <ArrowUpRight size={15} />
+                </Link>
+              </div>
+            </div>
+
+          </div>
         </div>
+
+        {/* Full-Width Leadership Quote Section */}
+        <div className="bg-[#111111] rounded-3xl p-8 sm:p-12 md:p-16 border border-white/10 relative overflow-hidden shadow-2xl">
+          <div className="flex items-center gap-3 text-[#0E9ED9] mb-6">
+            <MessageSquareQuote size={28} />
+            <span className="text-xs font-mono uppercase tracking-widest text-[#9DD6F3] font-semibold">LEADERSHIP PERSPECTIVE</span>
+          </div>
+
+          <blockquote className="font-poppins font-bold text-xl sm:text-2xl md:text-3xl lg:text-3.5xl text-white leading-snug tracking-tight mb-8 max-w-5xl">
+            “Great marketing begins with understanding the business behind the brand. At NextWave, our ambition is to bring sharper thinking, stronger creativity and disciplined execution together to create work that moves <span className="font-serif italic font-normal text-[#9DD6F3]" style={{ fontFamily: "'Playfair Display', serif" }}>business forward</span>.”
+          </blockquote>
+
+          <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="font-poppins text-sm sm:text-base font-bold text-[#9DD6F3] tracking-wide">
+              Abdullah Al Kaisar · Founder & CEO · NextWave 360 Solutions
+            </div>
+            <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">
+              Chittagong, Bangladesh
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -1,112 +1,169 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight, Compass, Palette, LineChart, Film, Megaphone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const servicesData = [
   {
     id: "01",
-    title: "Marketing Campaign Planning",
-    badge: "Campaign Strategy",
-    desc: "End-to-end campaign planning and execution built around objectives, timelines, and measurable results.",
-    img: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80"
+    name: "STRATEGY",
+    icon: Compass,
+    disciplines: "Brand Strategy · Communication Planning · Campaign Design · Media Strategy",
+    desc: "We turn business objectives into clear strategic direction.",
+    tag: "Core Strategic Foundation"
   },
   {
     id: "02",
-    title: "Website & Landing Page Strategy",
-    badge: "Conversion & UX",
-    desc: "Conversion-focused website and landing page strategy aligned with brand goals and user behavior.",
-    img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80"
+    name: "CREATIVE & DESIGN",
+    icon: Palette,
+    disciplines: "Brand Identity · Graphic Design · Copywriting · Audio-Visual · Content · Packaging",
+    desc: "We turn strategic thinking into ideas, stories and experiences people remember.",
+    tag: "Brand Expression"
   },
   {
     id: "03",
-    title: "Marketing Strategy & Consulting",
-    badge: "Business Growth",
-    desc: "Business-first marketing strategies aligned with growth goals, market reality, and long-term brand positioning.",
-    img: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80"
+    name: "DIGITAL & PERFORMANCE",
+    icon: LineChart,
+    disciplines: "Social Media · Paid Campaigns · SEO · Web Design · Performance Marketing",
+    desc: "We connect brands with audiences across digital channels and turn attention into action.",
+    tag: "Growth & ROI"
   },
   {
     id: "04",
-    title: "Branding & Brand Identity",
-    badge: "Visual Identity",
-    desc: "We shape brands through positioning, messaging, and visual identity that customers recognize, trust, and remember.",
-    img: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80"
+    name: "PRODUCTION & ACTIVATION",
+    icon: Film,
+    disciplines: "Event Management · OVC & TVC · Photography · Experiential & BTL Campaigns",
+    desc: "We bring ideas to life through production, experiences and brand activation.",
+    tag: "On-Ground & Media"
   },
   {
     id: "05",
-    title: "Digital & Performance Marketing",
-    badge: "Data-Driven ROI",
-    desc: "Data-driven campaigns focused on real business outcomes, not just reach, likes, or impressions.",
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: "06",
-    title: "Social Media Strategy & Management",
-    badge: "Audience Engagement",
-    desc: "Purpose-led social media strategies designed to build trust, consistency, and meaningful audience engagement.",
-    img: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: "07",
-    title: "Creative & Content Production",
-    badge: "Content Creation",
-    desc: "Strategic content, copy, and creatives that communicate clearly and convert attention into action.",
-    img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80"
+    name: "PR & COMMUNICATIONS",
+    icon: Megaphone,
+    disciplines: "Corporate Affairs · CSR & Advocacy · Reputation Management · Crisis Communication",
+    desc: "We help organisations communicate with clarity, consistency and confidence.",
+    tag: "Reputation & Corporate"
   }
 ];
 
 const Services = () => {
+  const [activeService, setActiveService] = useState(null);
+
   return (
-    <section id="services" className="bg-nw-white w-full py-24 relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <div className="mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-nw-black tracking-tight mb-4">
-            Our Services
-          </h2>
-          <p className="text-nw-black/60 text-lg max-w-2xl">
-            Comprehensive solutions to elevate your brand and drive measurable growth.
+    <section id="services" className="bg-[#090909] text-white w-full py-28 md:py-36 relative overflow-hidden border-b border-white/10">
+      
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#0E9ED9]/5 rounded-full filter blur-[150px] pointer-events-none" />
+
+      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20 pb-8 border-b border-white/10">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#0E9ED9]" />
+              <span className="text-xs md:text-sm font-mono tracking-[0.25em] text-[#9DD6F3] uppercase font-semibold">
+                CAPABILITIES & SOLUTIONS
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-black text-white tracking-tight uppercase">
+              THE 360 SPECTRUM
+            </h2>
+          </div>
+          <p className="text-gray-400 text-base md:text-lg max-w-md font-sans leading-relaxed">
+            End-to-end marketing capabilities, connecting commercial insight to lasting brand impact.
           </p>
         </div>
 
-        {/* Custom Grid matching reference: 3 on top row, 4 on bottom row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6">
-          {servicesData.map((service, index) => (
-            <div 
-              key={service.id}
-              className={`relative group bg-nw-blue rounded-3xl p-6 md:p-8 flex flex-col min-h-[300px] lg:min-h-[320px] overflow-hidden transition-transform duration-300 hover:-translate-y-1 shadow-xl hover:shadow-2xl ${
-                index < 3 ? 'lg:col-span-4 md:col-span-1' : 'lg:col-span-3 md:col-span-1'
-              }`}
-            >
-              {/* Background Abstract Image with blend mode to tint it based on brand guidelines */}
-              <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-in-out">
-                <img 
-                  src={service.img} 
-                  alt="abstract background" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        {/* Interactive Capability Rows */}
+        <div className="flex flex-col gap-3.5">
+          {servicesData.map((service, index) => {
+            const Icon = service.icon;
+            const isHovered = activeService === index;
 
-              {/* Top Content */}
-              <div className="relative z-10 mb-auto">
-                <h3 className={`text-nw-white font-bold mb-3 leading-tight ${index < 3 ? 'text-2xl lg:text-3xl' : 'text-xl lg:text-2xl'}`}>
-                  {service.title}
-                </h3>
-                <p className="text-nw-white/90 text-sm leading-relaxed font-medium line-clamp-3">
-                  {service.desc}
-                </p>
-              </div>
+            return (
+              <div 
+                key={service.id}
+                onMouseEnter={() => setActiveService(index)}
+                onMouseLeave={() => setActiveService(null)}
+                className={`group relative rounded-2xl p-6 sm:p-8 md:p-9 transition-all duration-300 border ${
+                  isHovered 
+                    ? 'bg-white/[0.07] border-[#0E9ED9]/50 shadow-[0_15px_40px_rgba(0,0,0,0.6)] translate-x-1.5' 
+                    : 'bg-[#111111] border-white/10 hover:border-white/20'
+                }`}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  
+                  {/* Left: Number, Icon, Name */}
+                  <div className="flex items-start sm:items-center gap-6 lg:w-[35%] shrink-0">
+                    <span className={`font-mono text-sm font-bold tracking-widest transition-colors ${
+                      isHovered ? 'text-[#9DD6F3]' : 'text-gray-500'
+                    }`}>
+                      {service.id}
+                    </span>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
+                        isHovered ? 'bg-[#0E9ED9] text-white' : 'bg-white/5 text-gray-300'
+                      }`}>
+                        <Icon size={20} />
+                      </div>
+                      <h3 className="font-poppins font-bold text-xl sm:text-2xl tracking-tight uppercase text-white">
+                        {service.name}
+                      </h3>
+                    </div>
+                  </div>
 
-              {/* Bottom Content */}
-              <div className="relative z-10 mt-6 flex flex-col xl:flex-row justify-between items-start xl:items-end w-full gap-4 xl:gap-0">
-                <div className="bg-nw-white text-nw-blue text-xs font-bold px-4 py-2 rounded-full shadow-sm max-w-full truncate text-center">
-                  {service.badge}
+                  {/* Middle: Core Impact & Disciplines */}
+                  <div className="lg:w-[45%] flex flex-col justify-center">
+                    <p className={`font-sans font-medium text-sm md:text-base leading-relaxed mb-1.5 transition-colors ${
+                      isHovered ? 'text-white' : 'text-gray-300'
+                    }`}>
+                      {service.desc}
+                    </p>
+                    <p className="text-xs font-mono tracking-wide text-gray-400">
+                      {service.disciplines}
+                    </p>
+                  </div>
+
+                  {/* Right: Category Tag & Arrow Link */}
+                  <div className="lg:w-[20%] flex items-center justify-between lg:justify-end gap-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5">
+                    <span className={`text-[10px] font-mono uppercase tracking-wider hidden xl:inline-block px-3 py-1 rounded-full border ${
+                      isHovered ? 'bg-[#0E9ED9]/15 text-[#9DD6F3] border-[#0E9ED9]/30' : 'bg-white/5 text-gray-400 border-white/10'
+                    }`}>
+                      {service.tag}
+                    </span>
+                    <Link
+                      to="/contact"
+                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
+                        isHovered 
+                          ? 'bg-white text-black scale-110 shadow-lg' 
+                          : 'bg-white/10 text-white group-hover:bg-white/20'
+                      }`}
+                      title="Enquire about this capability"
+                    >
+                      <ArrowUpRight size={18} />
+                    </Link>
+                  </div>
+
                 </div>
-                
-                <button className="bg-nw-white text-nw-blue w-10 h-10 min-w-[40px] rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm shrink-0">
-                  <ArrowRight size={18} strokeWidth={2.5} />
-                </button>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {/* Bottom Callout */}
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <p className="text-sm font-sans text-gray-400">
+            Need a bespoke integrated solution across strategy, creative, and performance?
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 text-xs font-poppins font-bold text-[#9DD6F3] hover:text-white transition-colors uppercase tracking-wider"
+          >
+            <span>DISCUSS YOUR OBJECTIVES</span>
+            <ArrowUpRight size={15} />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
