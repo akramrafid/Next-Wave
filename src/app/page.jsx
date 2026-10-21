@@ -1,23 +1,22 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Hero from '../components/Hero';
-import Philosophy from '../components/Philosophy';
-import SelectedWork from '../components/SelectedWork';
-import Services from '../components/Services';
-import Principles from '../components/Principles';
-import Industries from '../components/Industries';
-import Clients from '../components/Clients';
-import Team from '../components/Team';
-import Insights from '../components/Insights';
-import CTA from '../components/CTA';
+'use client';
 
-const Home = () => {
-  const location = useLocation();
-  
+import React, { useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Hero from '@/components/Hero';
+import Philosophy from '@/components/Philosophy';
+import SelectedWork from '@/components/SelectedWork';
+import Services from '@/components/Services';
+import Principles from '@/components/Principles';
+import Industries from '@/components/Industries';
+import Clients from '@/components/Clients';
+import Team from '@/components/Team';
+import Insights from '@/components/Insights';
+import CTA from '@/components/CTA';
+
+export default function HomePage() {
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.substring(1);
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const id = window.location.hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
@@ -25,7 +24,7 @@ const Home = () => {
         }, 100);
       }
     }
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -80,6 +79,4 @@ const Home = () => {
       <CTA />
     </>
   );
-};
-
-export default Home;
+}

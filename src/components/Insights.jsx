@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowUpRight, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const articles = [
   {

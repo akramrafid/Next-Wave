@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Send, Mail, Phone, MapPin, Globe } from 'lucide-react';
@@ -11,7 +13,7 @@ const serviceOptions = [
   "Integrated 360 Partnership"
 ];
 
-const Contact = () => {
+const ContactClient = () => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -248,10 +250,11 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
-                        PHONE
+                        PHONE / WHATSAPP *
                       </label>
                       <input
                         type="tel"
+                        required
                         placeholder="+880 1..."
                         value={formData.phone}
                         onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
@@ -260,43 +263,45 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Field 5: WHAT CAN WE HELP WITH? */}
+                  {/* Field 5: SERVICE NEEDED */}
                   <div className="space-y-2">
                     <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
-                      WHAT CAN WE HELP WITH?
+                      PRIMARY CAPABILITY REQUIRED
                     </label>
                     <select
                       value={formData.service}
                       onChange={e => setFormData(p => ({ ...p, service: e.target.value }))}
-                      className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#9DD6F3] transition-colors cursor-pointer"
+                      className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#9DD6F3] transition-colors"
                     >
                       {serviceOptions.map((opt, i) => (
-                        <option key={i} value={opt} className="bg-[#1a1a1a] text-white">{opt}</option>
+                        <option key={i} value={opt} className="bg-[#181818] text-white">
+                          {opt}
+                        </option>
                       ))}
                     </select>
                   </div>
 
-                  {/* Field 6: MESSAGE */}
+                  {/* Field 6: MESSAGE / SCOPE */}
                   <div className="space-y-2">
                     <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold">
-                      MESSAGE *
+                      PROJECT OVERVIEW & OBJECTIVES *
                     </label>
                     <textarea
-                      rows={4}
                       required
-                      placeholder="Briefly describe your objectives, timelines, or requirements..."
+                      rows={5}
+                      placeholder="Please outline your objectives, timeline, budget parameters or challenges..."
                       value={formData.message}
                       onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                      className="w-full bg-[#181818] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors resize-none"
+                      className="w-full bg-[#181818] border border-white/10 rounded-xl p-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#9DD6F3] transition-colors resize-none"
                     />
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-4">
+                  <div className="pt-2">
                     <button
                       type="submit"
                       disabled={sending}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-200 text-black text-xs font-poppins font-bold uppercase tracking-wider rounded-xl px-10 py-4 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 cursor-pointer shadow-lg"
+                      className="w-full bg-white hover:bg-gray-100 disabled:bg-gray-300 text-black py-4 rounded-full font-poppins font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
                     >
                       {sending ? (
                         <>
@@ -340,4 +345,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactClient;

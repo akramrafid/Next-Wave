@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 
 const socials = [
@@ -57,7 +57,7 @@ const Footer = () => {
           {/* Column 1: Brand Lockup & Strategic Positioning */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
             <div>
-              <Link to="/" className="flex items-center gap-3 text-decoration-none group mb-4">
+              <Link href="/" className="flex items-center gap-3 text-decoration-none group mb-4">
                 <img 
                   src="/favicon.png" 
                   alt="NextWave Logo" 
@@ -116,7 +116,7 @@ const Footer = () => {
               <li><a href="#approach" className="text-gray-400 hover:text-white transition-colors">How We Work</a></li>
               <li><a href="#industries" className="text-gray-400 hover:text-white transition-colors">Where We Work</a></li>
               <li><a href="#insights" className="text-gray-400 hover:text-white transition-colors">Insights</a></li>
-              <li><Link to="/contact" className="text-[#9DD6F3] hover:text-white transition-colors font-semibold">Start a Conversation ↗</Link></li>
+              <li><Link href="/contact" className="text-[#9DD6F3] hover:text-white transition-colors font-semibold">Start a Conversation ↗</Link></li>
             </ul>
           </div>
 

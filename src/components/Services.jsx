@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { ArrowUpRight, Compass, Palette, LineChart, Film, Megaphone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const servicesData = [
   {
@@ -132,7 +134,7 @@ const Services = () => {
                       {service.tag}
                     </span>
                     <Link
-                      to="/contact"
+                      href="/contact"
                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
                         isHovered 
                           ? 'bg-white text-black scale-110 shadow-lg' 
@@ -156,7 +158,7 @@ const Services = () => {
             Need a bespoke integrated solution across strategy, creative, and performance?
           </p>
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-flex items-center gap-2 text-xs font-poppins font-bold text-[#9DD6F3] hover:text-white transition-colors uppercase tracking-wider"
           >
             <span>DISCUSS YOUR OBJECTIVES</span>

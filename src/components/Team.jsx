@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, Mail, MessageSquareQuote } from 'lucide-react';
 
 const Team = () => {
@@ -84,7 +84,7 @@ const Team = () => {
                 </div>
 
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 bg-white hover:bg-gray-200 text-black text-xs font-poppins font-bold px-5 py-2.5 rounded-full uppercase tracking-wider transition-all duration-200 shadow-md"
                 >
                   <span>Connect</span>
@@ -120,7 +120,7 @@ const Team = () => {
                   10+ Years Marketing Leadership
                 </span>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 text-[#9DD6F3] hover:text-white text-xs font-poppins font-bold uppercase tracking-wider transition-colors"
                 >
                   <span>START A CONVERSATION</span>

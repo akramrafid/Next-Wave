@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, MessageCircle } from 'lucide-react';
 
 const CTA = () => {
@@ -33,7 +33,7 @@ const CTA = () => {
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center gap-3 bg-white hover:bg-gray-100 text-black px-10 py-5 rounded-xl font-poppins font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xl"
             >
               <span>START A CONVERSATION</span>

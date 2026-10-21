@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { ArrowUpRight, MapPin, Play } from 'lucide-react';
 import { CLIENT_LOGOS } from '../data/clientLogosData';
@@ -92,7 +94,7 @@ const Hero = () => {
             {/* Action Buttons */}
             <div className="hero-anim flex flex-wrap items-center gap-4">
               <Link
-                to="/contact"
+                href="/contact"
                 className="inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-black px-7 py-3.5 rounded-lg font-poppins font-bold text-xs uppercase tracking-wider transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
               >
                 <span>START A CONVERSATION</span>

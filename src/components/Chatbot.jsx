@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Loader2, Paperclip } from 'lucide-react';
 
@@ -107,17 +109,12 @@ export default function Chatbot() {
       
       apiMessages.push({ role: "user", content: currentMessageContent });
 
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:5173",
-          "X-Title": "Nextwave Assistant"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "openai/gpt-4o-mini",
-          max_tokens: 1000,
           messages: apiMessages
         })
       });

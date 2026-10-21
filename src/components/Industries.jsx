@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Building2, ShoppingBag, GraduationCap, Utensils, Home, Stethoscope, Cpu, Briefcase } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const sectors = [
   { name: "RETAIL & CONSUMER", icon: ShoppingBag, desc: "Fast-moving goods, lifestyle retail & consumer brand ecosystems." },
@@ -83,7 +83,7 @@ const Industries = () => {
             </div>
 
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center justify-between w-full bg-white/10 hover:bg-white text-white hover:text-black px-7 py-4 rounded-full text-xs font-poppins font-bold uppercase tracking-wider transition-all duration-300 group"
             >
               <span>Consult with Our Strategic Team</span>

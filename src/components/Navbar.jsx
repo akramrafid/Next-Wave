@@ -1,6 +1,9 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { X, ArrowUpRight } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
   { label: 'WORK',     type: 'hash', target: '#work'     },
@@ -45,8 +48,8 @@ const HamburgerIcon = ({ open }) => (
 const Navbar = () => {
   const [scrolled, setScrolled]     = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const router    = useRouter();
+  const pathname  = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
@@ -61,10 +64,10 @@ const Navbar = () => {
     e.preventDefault();
     setIsMenuOpen(false);
     if (link.type === 'link') {
-      navigate(link.target);
+      router.push(link.target);
     } else {
-      if (location.pathname !== '/') {
-        navigate('/' + link.target);
+      if (pathname !== '/') {
+        router.push('/' + link.target);
       } else {
         const el = document.getElementById(link.target.substring(1));
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -161,7 +164,7 @@ const Navbar = () => {
       >
         {/* Left: Brand Lockup with NextWave Logo Mark */}
         <Link
-          to="/"
+          href="/"
           onClick={() => setIsMenuOpen(false)}
           className="flex items-center gap-3 text-decoration-none group"
         >
@@ -197,7 +200,7 @@ const Navbar = () => {
         {/* Right: Pill Outlined Button + Hamburger */}
         <div className="flex items-center gap-4">
           <Link
-            to="/contact"
+            href="/contact"
             className="hidden sm:inline-flex items-center gap-2 border border-white/40 hover:border-white text-white hover:text-black hover:bg-white text-xs font-poppins font-semibold px-6 py-2.5 rounded-full uppercase tracking-wider transition-all duration-200"
           >
             <span>START A CONVERSATION</span>
@@ -261,7 +264,7 @@ const Navbar = () => {
           {/* CTA in mobile dropdown */}
           <div style={{ padding: '8px 6px 4px' }}>
             <Link
-              to="/contact"
+              href="/contact"
               onClick={() => setIsMenuOpen(false)}
               className="w-full bg-white text-black hover:bg-gray-200 py-3 rounded-xl font-poppins font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 text-decoration-none shadow-md transition-colors"
             >

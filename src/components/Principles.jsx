@@ -1,6 +1,6 @@
 import React from 'react';
 import { Target, HeartHandshake, Zap, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const steps = [
   {
@@ -101,7 +101,7 @@ const Principles = () => {
             </p>
           </div>
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-black px-7 py-3.5 rounded-full text-xs font-poppins font-bold uppercase tracking-wider transition-all duration-200 shrink-0 shadow-lg hover:scale-105"
           >
             <span>START A CONVERSATION</span>

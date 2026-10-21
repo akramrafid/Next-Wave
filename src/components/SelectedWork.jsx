@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 
 const projects = [
@@ -64,7 +64,7 @@ const SelectedWork = () => {
               A curated look into the strategic thinking, visual craft and digital execution of NextWave.
             </p>
             <Link
-              to="/gallery"
+              href="/gallery"
               className="inline-flex items-center gap-2 text-[#9DD6F3] hover:text-white border-b border-[#9DD6F3]/50 hover:border-white py-1 font-poppins text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
             >
               <span>View Archive</span>
@@ -99,7 +99,7 @@ const SelectedWork = () => {
                     {item.category}
                   </span>
                   <Link
-                    to="/gallery"
+                    href="/gallery"
                     className="w-10 h-10 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center transition-all duration-300 backdrop-blur-md"
                     title="View Work"
                   >
@@ -128,7 +128,7 @@ const SelectedWork = () => {
             Showcasing commercial deliverables spanning Bangladesh and cross-border initiatives.
           </p>
           <Link
-            to="/gallery"
+            href="/gallery"
             className="inline-flex items-center gap-2 bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-full text-xs font-poppins font-bold uppercase tracking-wider transition-all duration-300 shadow-md"
           >
             <span>Explore Complete Visual Archive</span>
