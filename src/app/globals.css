@@ -4,45 +4,92 @@
 
 :root {
   --nw-blue: #0E9ED9;
+  --nw-blue-ink: #076C96;
+  --nw-blue-ink-hover: #055475;
+  --nw-navy: #091345;
+  --nw-blue-tint: #E8F6FC;
   --nw-black: #262626;
   --nw-grey: #CCCCCC;
   --nw-light: #F7F7F7;
   --nw-white: #FFFFFF;
+  --ease-brand: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--nw-blue-ink) var(--nw-light);
+  scrollbar-width: thin;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--nw-white);
+  font-family: var(--font-manrope, 'Manrope'), 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--nw-light);
   color: var(--nw-black);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  caret-color: var(--nw-blue-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins, 'Poppins'), 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
+::selection {
+  background-color: rgba(14, 158, 217, 0.22);
+  color: var(--nw-black);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nw-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8D98A6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nw-blue-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--nw-blue-ink);
+  outline-offset: 2px;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+/* Official Brand Guidelines Gradient Field (#0E9ED9 Positive Blue -> #091345 Deep Navy, AA text floor across copy zone) */
+.bg-nw-gradient {
+  background: radial-gradient(circle at 86% 14%, #0E9ED9 0%, #096191 40%, #0A2E75 72%, #091345 100%);
+}
+
+@keyframes clientMarquee {
+  0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 60s linear infinite;
-}
-.animate-marquee-reverse {
-  animation: marquee 60s linear infinite reverse;
+
+.hero-client-marquee {
+  display: flex;
+  width: max-content;
+  animation: clientMarquee 52s linear infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.hero-client-marquee:hover {
+  animation-play-state: paused;
 }
 
-/* ── Luxury Perceived-Performance Skeleton Shimmer ── */
+/* Skeleton Shimmer for Loading States */
 @keyframes shimmerWave {
   0% {
     background-position: -200% 0;
@@ -55,32 +102,20 @@ h1, h2, h3, h4, h5, h6 {
 .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.09) 50%,
-    rgba(255, 255, 255, 0.03) 100%
+    rgba(38, 38, 38, 0.04) 0%,
+    rgba(14, 158, 217, 0.12) 50%,
+    rgba(38, 38, 38, 0.04) 100%
   );
   background-size: 200% 100%;
   animation: shimmerWave 1.75s ease-in-out infinite;
 }
 
-.skeleton-shimmer-dark {
-  background: linear-gradient(
-    90deg,
-    #131313 0%,
-    #242424 50%,
-    #131313 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmerWave 1.75s ease-in-out infinite;
-}
-
-.skeleton-shimmer-accent {
-  background: linear-gradient(
-    90deg,
-    rgba(14, 158, 217, 0.05) 0%,
-    rgba(14, 158, 217, 0.18) 50%,
-    rgba(14, 158, 217, 0.05) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmerWave 1.75s ease-in-out infinite;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-client-marquee,
+  .skeleton-shimmer {
+    animation: none !important;
+  }
 }

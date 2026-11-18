@@ -1,279 +1,213 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { X, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { BrandLogo } from './BrandWatermark';
+import { ArrowUpRightIcon, CloseCircleIcon, MenuIcon } from './Icons';
 
 const navLinks = [
+  { label: 'ABOUT',    type: 'hash', target: '#about'    },
   { label: 'WORK',     type: 'hash', target: '#work'     },
-  { label: 'ABOUT',    type: 'hash', target: '#about'     },
-  { label: 'SERVICES', type: 'hash', target: '#services'  },
-  { label: 'APPROACH', type: 'hash', target: '#approach'  },
-  { label: 'INSIGHTS', type: 'hash', target: '#insights'  },
-  { label: 'CONTACT',  type: 'link', target: '/contact'   },
+  { label: 'SERVICES', type: 'hash', target: '#services' },
+  { label: 'APPROACH', type: 'hash', target: '#approach' },
+  { label: 'INSIGHT',  type: 'hash', target: '#insights' },
+  { label: 'CONTACT',  type: 'link', target: '/contact'  },
 ];
 
-/* ── Hamburger icon ── */
-const HamburgerIcon = ({ open }) => (
-  <div style={{ width: 22, height: 16, position: 'relative', cursor: 'pointer' }}>
-    <style>{`
-      .hb-line {
-        position: absolute;
-        left: 0;
-        width: 22px;
-        height: 2px;
-        border-radius: 2px;
-        background: #ffffff;
-        transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-        transform-origin: center;
-      }
-    `}</style>
-    <span className="hb-line" style={{
-      top: open ? '7px' : '0px',
-      transform: open ? 'rotate(45deg)' : 'none',
-    }} />
-    <span className="hb-line" style={{
-      top: '7px',
-      opacity: open ? 0 : 1,
-      transform: open ? 'scaleX(0)' : 'none',
-    }} />
-    <span className="hb-line" style={{
-      top: open ? '7px' : '14px',
-      transform: open ? 'rotate(-45deg)' : 'none',
-    }} />
-  </div>
-);
-
 const Navbar = () => {
-  const [scrolled, setScrolled]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router    = useRouter();
-  const pathname  = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-      if (window.scrollY > 50) setIsMenuOpen(false);
+      const nextScrolled = window.scrollY > 40;
+      setScrolled(nextScrolled);
+      if (nextScrolled) setIsMenuOpen(false);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    if (isMenuOpen) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
 
   const handleNavClick = (e, link) => {
     e.preventDefault();
     setIsMenuOpen(false);
     if (link.type === 'link') {
       router.push(link.target);
+    } else if (pathname !== '/') {
+      router.push('/' + link.target);
     } else {
-      if (pathname !== '/') {
-        router.push('/' + link.target);
-      } else {
-        const el = document.getElementById(link.target.substring(1));
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      const el = document.getElementById(link.target.substring(1));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const navTop = scrolled ? '12px' : '36px';
+  // Solid crisp white architectural bar on scroll or inner routes; deep brand navy glaze at top of Hero
+  const useLightChrome = scrolled || pathname !== '/';
 
   return (
     <>
       <style>{`
         .header-nav-link {
-          font-family: 'DM Sans', sans-serif;
-          font-weight: 600;
-          font-size: 13px;
-          letter-spacing: 0.12em;
-          color: #D1D5DB;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 500;
+          font-size: 12px;
+          letter-spacing: 0.14em;
           text-decoration: none;
           text-transform: uppercase;
-          transition: color 0.2s ease;
+          transition: color 180ms ease;
           position: relative;
-          padding: 4px 0;
-        }
-        .header-nav-link:hover {
-          color: #FFFFFF;
+          padding: 6px 0;
         }
         .header-nav-link::after {
           content: '';
           position: absolute;
           bottom: 0;
           left: 0;
-          width: 0;
-          height: 1.5px;
-          background: #9DD6F3;
-          transition: width 0.25s ease;
+          right: 0;
+          height: 2px;
+          background: #076C96;
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .header-nav-link:hover::after {
-          width: 100%;
-        }
-
-        .collapsed-menu-link {
-          display: block;
-          width: 100%;
-          padding: 12px 18px;
-          text-align: left;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
-          font-size: 13px;
-          letter-spacing: 0.08em;
-          color: #E5E7EB;
-          text-decoration: none;
-          border-radius: 12px;
-          transition: background 0.18s, color 0.18s, transform 0.18s;
-          cursor: pointer;
-          background: none;
-          border: none;
-        }
-        .collapsed-menu-link:hover {
-          background: rgba(255,255,255,0.08);
-          color: #9DD6F3;
-          transform: translateX(4px);
+        .header-nav-link:hover::after,
+        .header-nav-link[data-active='true']::after {
+          transform: scaleX(1);
         }
       `}</style>
 
-      {/* ── Main Top Header / Navbar Bar ── */}
       <header
         style={{
-          position: 'fixed',
-          top: navTop,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 50,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          width: scrolled ? 'min(92%, 1240px)' : 'min(94%, 1560px)',
-          padding: scrolled ? '12px 24px' : '16px 32px',
-          borderRadius: scrolled ? '9999px' : '20px',
-          background: scrolled
-            ? 'rgba(10,10,10,0.92)'
-            : 'rgba(8,8,8,0.75)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: scrolled
-            ? '1px solid rgba(255,255,255,0.12)'
-            : '1px solid rgba(255,255,255,0.06)',
-          boxShadow: scrolled
-            ? '0 12px 40px rgba(0,0,0,0.6)'
-            : 'none',
-          transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
+          transform: scrolled ? 'translateY(-32px)' : 'translateY(0px)',
         }}
+        className={`fixed top-8 left-0 right-0 z-50 border-b transition-[background-color,border-color,transform] duration-200 ease-out ${
+          useLightChrome
+            ? 'bg-white/95 backdrop-blur-md border-[#CCCCCC] text-[#262626]'
+            : 'bg-[#091345]/45 backdrop-blur-md border-white/20 text-white'
+        }`}
       >
-        {/* Left: Brand Lockup with NextWave Logo Mark */}
-        <Link
-          href="/"
-          onClick={() => setIsMenuOpen(false)}
-          className="flex items-center gap-3 text-decoration-none group"
-        >
-          <img 
-            src="/favicon.png" 
-            alt="NextWave Logo" 
-            className="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform shrink-0"
-          />
-          <div className="flex flex-col">
-            <span className="font-poppins font-black text-xl sm:text-2xl tracking-[0.06em] text-white leading-none group-hover:text-[#9DD6F3] transition-colors">
-              NEXTWAVE
-            </span>
-            <span className="font-mono text-[8px] sm:text-[9px] tracking-[0.34em] text-gray-400 font-semibold uppercase mt-1">
-              360 SOLUTIONS
-            </span>
-          </div>
-        </Link>
-
-        {/* Center: Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8 xl:gap-10">
-          {navLinks.map(link => (
-            <a
-              key={link.label}
-              href={link.target}
-              className="header-nav-link"
-              onClick={e => handleNavClick(e, link)}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Right: Pill Outlined Button + Hamburger */}
-        <div className="flex items-center gap-4">
+        <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 h-[68px] flex items-center justify-between gap-6">
+          {/* Official Brand Logo */}
           <Link
-            href="/contact"
-            className="hidden sm:inline-flex items-center gap-2 border border-white/40 hover:border-white text-white hover:text-black hover:bg-white text-xs font-poppins font-semibold px-6 py-2.5 rounded-full uppercase tracking-wider transition-all duration-200"
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            className="flex items-center py-1 shrink-0 transition-opacity hover:opacity-90"
+            aria-label="Next Wave Home"
           >
-            <span>START A CONVERSATION</span>
-            <span className="text-sm font-normal">↗</span>
+            <BrandLogo
+              variant={useLightChrome ? 'light' : 'dark'}
+              className="h-7 sm:h-8 w-auto"
+            />
           </Link>
 
-          {/* Mobile Hamburger Toggle */}
-          <button
-            onClick={() => setIsMenuOpen(o => !o)}
-            aria-label="Toggle menu"
-            className="flex lg:hidden items-center justify-center w-9 h-9 rounded-full bg-white/10 text-white border border-white/20"
-          >
-            {isMenuOpen ? <X size={16} /> : <HamburgerIcon open={false} />}
-          </button>
+          {/* Desktop Navigation Links (ABOUT, WORK, SERVICES, APPROACH, INSIGHT, CONTACT) */}
+          <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-8 xl:gap-10">
+            {navLinks.map((link) => {
+              const isActive = link.type === 'link' && pathname === link.target;
+              return (
+                <a
+                  key={link.label}
+                  href={link.target}
+                  data-active={isActive ? 'true' : 'false'}
+                  className={`header-nav-link ${
+                    useLightChrome
+                      ? isActive
+                        ? 'text-[#076C96]'
+                        : 'text-[#262626] hover:text-[#076C96]'
+                      : isActive
+                        ? 'text-white'
+                        : 'text-white/90 hover:text-white'
+                  }`}
+                  onClick={(e) => handleNavClick(e, link)}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Primary Action & Mobile Trigger */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/contact"
+              className={`hidden sm:inline-flex items-center gap-2 text-xs font-poppins font-semibold px-5 py-2.5 rounded-[2px] uppercase tracking-[0.12em] transition-colors duration-150 ${
+                useLightChrome
+                  ? 'bg-[#262626] hover:bg-[#076C96] text-white'
+                  : 'bg-white hover:bg-[#F7F7F7] text-[#262626]'
+              }`}
+            >
+              <span>Start a Conversation</span>
+              <ArrowUpRightIcon size={15} />
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((o) => !o)}
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMenuOpen}
+              className={`flex lg:hidden items-center justify-center w-11 h-11 rounded-[2px] border transition-colors duration-150 ${
+                useLightChrome
+                  ? 'bg-[#F7F7F7] text-[#262626] border-[#CCCCCC]'
+                  : 'bg-white/10 text-white border-white/25'
+              }`}
+            >
+              {isMenuOpen ? <CloseCircleIcon size={20} /> : <MenuIcon size={20} />}
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* ── Mobile / Collapsed Dropdown Menu ── */}
-      <div
-        style={{
-          position: 'fixed',
-          top: scrolled ? `calc(${navTop} + 60px)` : `calc(${navTop} + 72px)`,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 'min(92%, 360px)',
-          zIndex: 49,
-          pointerEvents: isMenuOpen ? 'auto' : 'none',
-          opacity: isMenuOpen ? 1 : 0,
-          transform: isMenuOpen
-            ? 'translateX(-50%) translateY(0) scale(1)'
-            : 'translateX(-50%) translateY(-12px) scale(0.96)',
-          transition: 'opacity 0.25s ease, transform 0.25s cubic-bezier(0.4,0,0.2,1)',
-        }}
-      >
+      {/* Mobile Full-Width Architectural Menu Drawer */}
+      {isMenuOpen && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
           style={{
-            background: 'rgba(18,18,18,0.96)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255,255,255,0.15)',
-            borderRadius: '20px',
-            padding: '12px',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
-            overflow: 'hidden',
+            top: scrolled ? '68px' : '100px',
           }}
+          className="fixed left-0 right-0 z-50 bg-white border-b border-[#CCCCCC] shadow-xl lg:hidden"
         >
-          {navLinks.map((link, i) => (
-            <a
-              key={link.label}
-              href={link.target}
-              className="collapsed-menu-link"
-              onClick={e => handleNavClick(e, link)}
-              style={{
-                transitionDelay: isMenuOpen ? `${i * 25}ms` : '0ms',
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-
-          {/* CTA in mobile dropdown */}
-          <div style={{ padding: '8px 6px 4px' }}>
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="w-full bg-white text-black hover:bg-gray-200 py-3 rounded-xl font-poppins font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 text-decoration-none shadow-md transition-colors"
-            >
-              <span>START A CONVERSATION</span>
-              <ArrowUpRight size={14} />
-            </Link>
-          </div>
+          <nav aria-label="Mobile navigation links" className="max-w-[1560px] mx-auto px-6 py-4 flex flex-col divide-y divide-[#CCCCCC]/70">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.target}
+                className="py-3.5 text-sm font-poppins font-medium uppercase tracking-[0.14em] text-[#262626] hover:text-[#076C96] flex items-center justify-between transition-colors"
+                onClick={(e) => handleNavClick(e, link)}
+              >
+                <span>{link.label}</span>
+                <ArrowUpRightIcon size={16} className="text-[#076C96]" />
+              </a>
+            ))}
+            <div className="pt-4 pb-2">
+              <Link
+                href="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#076C96] hover:bg-[#055475] text-white py-3.5 px-6 rounded-[2px] text-xs font-poppins font-semibold uppercase tracking-[0.14em] transition-colors"
+              >
+                <span>Start a Conversation</span>
+                <ArrowUpRightIcon size={16} />
+              </Link>
+            </div>
+          </nav>
         </div>
-      </div>
+      )}
     </>
   );
 };

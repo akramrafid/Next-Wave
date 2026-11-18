@@ -12,18 +12,20 @@ export default {
       colors: {
         nw: {
           blue: "#0E9ED9",
+          navy: "#091345",
+          blueTint: "#E8F6FC",
           black: "#262626",
           grey: "#CCCCCC",
           light: "#F7F7F7",
-          white: "#FFFFFF",
-        }
+          white: "#F7F7F7",
+        },
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        sans: ["DM Sans", "sans-serif"],
+        poppins: ["var(--font-poppins, 'Poppins')", "Poppins", "sans-serif"],
+        sans: ["var(--font-manrope, 'Manrope')", "Manrope", "sans-serif"],
         mono: ["Space Mono", "monospace"],
-      }
+      },
     },
   },
   plugins: [],
-}
+};

@@ -1,122 +1,95 @@
 import React from 'react';
-import { ArrowUpRight, Building2, ShoppingBag, GraduationCap, Utensils, Home, Stethoscope, Cpu, Briefcase } from 'lucide-react';
 import Link from 'next/link';
+import { BrandWaveOutline } from './BrandWatermark';
+import { ArrowUpRightIcon, GlobalIcon } from './Icons';
 
 const sectors = [
-  { name: "RETAIL & CONSUMER", icon: ShoppingBag, desc: "Fast-moving goods, lifestyle retail & consumer brand ecosystems." },
-  { name: "EDUCATION", icon: GraduationCap, desc: "Institutions, edtech platforms & national academic organisations." },
-  { name: "HOSPITALITY & LIFESTYLE", icon: Utensils, desc: "Restaurants, luxury destinations & experiential lifestyle ventures." },
-  { name: "CORPORATE & B2B", icon: Building2, desc: "Enterprise conglomerates, industrial leaders & holding companies." },
-  { name: "REAL ESTATE", icon: Home, desc: "Developers, commercial architectural firms & property leaders." },
-  { name: "HEALTHCARE & PHARMA", icon: Stethoscope, desc: "Hospitals, wellness brands & healthcare innovators." },
-  { name: "TECHNOLOGY & SAAS", icon: Cpu, desc: "Digital products, SaaS enterprises & technology leaders." },
-  { name: "EMERGING VENTURES", icon: Briefcase, desc: "Ambitious founder-led businesses & high-growth disruptors." }
+  { name: "Retail & Consumer", desc: "Fast-moving goods, lifestyle retail & consumer brand ecosystems." },
+  { name: "Education", desc: "Institutions, edtech platforms & national academic organisations." },
+  { name: "Hospitality & Lifestyle", desc: "Restaurants, luxury destinations & experiential lifestyle ventures." },
+  { name: "Corporate & B2B", desc: "Enterprise conglomerates, industrial leaders & holding companies." },
+  { name: "Real Estate", desc: "Developers, commercial architectural firms & property leaders." },
+  { name: "Healthcare & Pharma", desc: "Hospitals, wellness brands & healthcare innovators." },
+  { name: "Technology & SaaS", desc: "Digital products, SaaS enterprises & technology leaders." },
+  { name: "Emerging Ventures", desc: "Ambitious founder-led businesses & high-growth disruptors." }
 ];
 
 const Industries = () => {
   return (
-    <section id="industries" className="bg-[#090909] text-white w-full py-28 md:py-36 relative overflow-hidden border-b border-white/10">
-      
-      {/* Background Lighting */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#0E9ED9]/5 rounded-full filter blur-[150px] pointer-events-none" />
-
-      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
-        
-        {/* Section 1: Where We Work Header */}
-        <div className="mb-20">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-white/10">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#0E9ED9]" />
-                <span className="text-xs md:text-sm font-mono tracking-[0.25em] text-[#9DD6F3] uppercase font-semibold">
-                  SECTOR EXPERTISE
-                </span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-black text-white tracking-tight uppercase">
-                WHERE WE WORK
-              </h2>
-            </div>
-            <p className="text-gray-400 text-base md:text-lg max-w-md font-sans leading-relaxed">
-              Tailored brand architectures and digital systems engineered across key economic sectors.
-            </p>
-          </div>
-
-          {/* 8 Sector Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {sectors.map((sector, idx) => {
-              const Icon = sector.icon;
-              return (
-                <div 
-                  key={idx}
-                  className="bg-[#111111] rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-[#0E9ED9]/40 hover:bg-white/[0.04] transition-all duration-300 group shadow-lg"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-white/5 text-[#9DD6F3] group-hover:bg-[#0E9ED9] group-hover:text-white flex items-center justify-center mb-5 transition-all duration-300">
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="font-poppins font-bold text-sm sm:text-base text-white uppercase tracking-tight mb-2 group-hover:text-[#9DD6F3] transition-colors">
-                    {sector.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-400 font-sans leading-relaxed">
-                    {sector.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+    <section id="industries" className="bg-[#F7F7F7] text-[#262626] w-full py-20 md:py-28 relative border-b border-[#CCCCCC]">
+      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-semibold text-[#262626] tracking-[-0.02em]">
+            Where We Work
+          </h2>
+          <p className="text-[#262626]/75 text-sm sm:text-base max-w-[44ch] font-sans leading-relaxed [text-wrap:pretty]">
+            Tailored brand architectures and digital systems engineered across key economic sectors.
+          </p>
         </div>
 
-        {/* Section 2: Enterprise & Global Ambition Dual Banners */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Card 1: Enterprise Positioning */}
-          <div className="lg:col-span-6 bg-gradient-to-b from-[#141414] to-[#0d0d0d] text-white rounded-3xl p-8 sm:p-12 flex flex-col justify-between border border-white/15 shadow-2xl">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-[0.22em] text-[#9DD6F3] font-semibold block mb-4">
-                CORPORATE & ENTERPRISE FOCUS
-              </span>
-              <h3 className="font-poppins font-black text-3xl sm:text-4xl text-white tracking-tight uppercase leading-tight mb-6">
-                FOR BUSINESSES THAT THINK BIGGER.
+        {/* Continuous 4x2 Architectural Hairline Sector Ledger */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-[#CCCCCC] bg-white">
+          {sectors.map((sector) => (
+            <div
+              key={sector.name}
+              className="group p-7 sm:p-8 border-r border-b border-[#CCCCCC] hover:bg-[#F7F7F7] transition-colors duration-150 flex flex-col justify-between min-h-[172px]"
+            >
+              <h3 className="font-poppins font-semibold text-base sm:text-lg text-[#262626] tracking-[-0.01em] mb-3 group-hover:text-[#076C96] transition-colors">
+                {sector.name}
               </h3>
-              <p className="text-gray-300 font-sans text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-xs sm:text-sm text-[#262626]/75 font-sans leading-relaxed [text-wrap:pretty]">
+                {sector.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Flush Enterprise & Global Ambition Split Plates */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 border-x border-b border-[#CCCCCC]">
+          {/* Left: Clarity Black Enterprise Focus */}
+          <div className="lg:col-span-6 bg-[#262626] text-white p-8 sm:p-12 lg:p-14 flex flex-col justify-between lg:border-r lg:border-[#CCCCCC]">
+            <div>
+              <h3 className="font-poppins font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-[-0.02em] leading-tight mb-5 max-w-[18ch]">
+                For Businesses That Think Bigger.
+              </h3>
+              <p className="text-[#F7F7F7]/85 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-[48ch] [text-wrap:pretty]">
                 From growing businesses to established organisations, we bring strategic thinking, creative capability and disciplined execution together to solve marketing and communication challenges.
               </p>
             </div>
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-between w-full bg-white/10 hover:bg-white text-white hover:text-black px-7 py-4 rounded-full text-xs font-poppins font-bold uppercase tracking-wider transition-all duration-300 group"
+              className="inline-flex items-center justify-between w-full bg-white/10 hover:bg-[#076C96] text-white px-6 py-4 rounded-[2px] text-xs font-poppins font-semibold uppercase tracking-[0.12em] transition-colors duration-150 group border border-white/20 hover:border-[#076C96]"
             >
               <span>Consult with Our Strategic Team</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRightIcon size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
 
-          {/* Card 2: Global Ambition */}
-          <div className="lg:col-span-6 bg-gradient-to-br from-[#0c7aa8] to-[#0E9ED9] text-white rounded-3xl p-8 sm:p-12 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+          {/* Right: Brand Guide Gradient Global Ambition */}
+          <div className="lg:col-span-6 bg-nw-gradient text-white p-8 sm:p-12 lg:p-14 flex flex-col justify-between relative overflow-hidden">
+            <BrandWaveOutline
+              className="pointer-events-none select-none absolute -right-10 -bottom-10 w-60 h-60 text-white"
+              strokeOpacity={0.18}
+            />
             <div className="relative z-10">
-              <span className="text-xs font-mono uppercase tracking-[0.22em] text-white/80 font-semibold block mb-4">
-                INTERNATIONAL AMBITION
-              </span>
-              <h3 className="font-poppins font-black text-3xl sm:text-4xl text-white tracking-tight uppercase leading-tight mb-6">
-                FROM BANGLADESH. FOR THE WORLD.
+              <h3 className="font-poppins font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-[-0.02em] leading-tight mb-5 max-w-[18ch]">
+                From Bangladesh. For The World.
               </h3>
-              <p className="text-white/95 font-sans text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-white/95 font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-[48ch] [text-wrap:pretty]">
                 Rooted in local insight, built with global ambition. We believe great marketing created in Bangladesh can compete confidently across international markets.
               </p>
             </div>
 
             <div className="relative z-10 pt-6 border-t border-white/25 flex items-center justify-between">
-              <span className="text-xs font-mono text-white/90 uppercase tracking-widest font-semibold">
+              <span className="text-xs font-poppins text-white/95 uppercase tracking-[0.14em] font-medium">
                 Local Insight · Global Standard
               </span>
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
-                ✓
-              </div>
+              <GlobalIcon size={20} className="text-white/90" />
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

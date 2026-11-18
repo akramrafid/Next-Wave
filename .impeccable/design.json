@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T08:05:00Z",
+  "title": "Design System: Next Wave",
+  "extensions": {
+    "colorMeta": {
+      "positive-blue": {
+        "role": "primary",
+        "displayName": "Positive Blue",
+        "canonical": "#0E9ED9",
+        "tonalRamp": [
+          "oklch(15% 0.137 234.6)",
+          "oklch(26% 0.137 234.6)",
+          "oklch(38% 0.137 234.6)",
+          "oklch(50% 0.137 234.6)",
+          "oklch(62% 0.137 234.6)",
+          "oklch(74% 0.137 234.6)",
+          "oklch(85% 0.137 234.6)",
+          "oklch(95% 0.137 234.6)"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#076C96",
+        "tonalRamp": [
+          "oklch(15% 0.104 234.8)",
+          "oklch(26% 0.104 234.8)",
+          "oklch(38% 0.104 234.8)",
+          "oklch(50% 0.104 234.8)",
+          "oklch(62% 0.104 234.8)",
+          "oklch(74% 0.104 234.8)",
+          "oklch(85% 0.104 234.8)",
+          "oklch(95% 0.104 234.8)"
+        ]
+      },
+      "signal-blue-hover": {
+        "role": "primary",
+        "displayName": "Signal Blue Hover",
+        "canonical": "#055475",
+        "tonalRamp": [
+          "oklch(15% 0.086 234.3)",
+          "oklch(26% 0.086 234.3)",
+          "oklch(38% 0.086 234.3)",
+          "oklch(50% 0.086 234.3)",
+          "oklch(62% 0.086 234.3)",
+          "oklch(74% 0.086 234.3)",
+          "oklch(85% 0.086 234.3)",
+          "oklch(95% 0.086 234.3)"
+        ]
+      },
+      "deep-navy": {
+        "role": "primary",
+        "displayName": "Deep Navy",
+        "canonical": "#091345",
+        "tonalRamp": [
+          "oklch(15% 0.094 268.3)",
+          "oklch(26% 0.094 268.3)",
+          "oklch(38% 0.094 268.3)",
+          "oklch(50% 0.094 268.3)",
+          "oklch(62% 0.094 268.3)",
+          "oklch(74% 0.094 268.3)",
+          "oklch(85% 0.094 268.3)",
+          "oklch(95% 0.094 268.3)"
+        ]
+      },
+      "whatsapp-green": {
+        "role": "secondary",
+        "displayName": "WhatsApp Channel Green",
+        "canonical": "#12803E",
+        "tonalRamp": [
+          "oklch(15% 0.137 150.6)",
+          "oklch(26% 0.137 150.6)",
+          "oklch(38% 0.137 150.6)",
+          "oklch(50% 0.137 150.6)",
+          "oklch(62% 0.137 150.6)",
+          "oklch(74% 0.137 150.6)",
+          "oklch(85% 0.137 150.6)",
+          "oklch(95% 0.137 150.6)"
+        ]
+      },
+      "whatsapp-green-hover": {
+        "role": "secondary",
+        "displayName": "WhatsApp Channel Green Hover",
+        "canonical": "#0F6932",
+        "tonalRamp": [
+          "oklch(15% 0.118 150.5)",
+          "oklch(26% 0.118 150.5)",
+          "oklch(38% 0.118 150.5)",
+          "oklch(50% 0.118 150.5)",
+          "oklch(62% 0.118 150.5)",
+          "oklch(74% 0.118 150.5)",
+          "oklch(85% 0.118 150.5)",
+          "oklch(95% 0.118 150.5)"
+        ]
+      },
+      "clarity-black": {
+        "role": "neutral",
+        "displayName": "Clarity Black",
+        "canonical": "#262626",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "insight-white": {
+        "role": "neutral",
+        "displayName": "Insight White",
+        "canonical": "#F7F7F7",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "logic-grey": {
+        "role": "neutral",
+        "displayName": "Logic Grey",
+        "canonical": "#CCCCCC",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "placeholder-slate": {
+        "role": "neutral",
+        "displayName": "Placeholder Slate",
+        "canonical": "#666666",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statements, closing CTA headings, and primary page headers."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section anchors (30px mobile to 48px desktop) and pull-quote manifestos."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card headings, pillar labels, and sub-section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Manrope narrative paragraphs (40ch-58ch measure) and accessible form fields."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase Poppins navigation links, CTA labels, field labels, and inline metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-chrome-sm",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+        "purpose": "Fixed bottom-right Chatbot toggle and WhatsAppCTA launcher only."
+      },
+      {
+        "name": "floating-drawer",
+        "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+        "purpose": "Expanded mobile navigation dropdown overlay only."
+      },
+      {
+        "name": "floating-dialog",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        "purpose": "Open Chatbot dialog window only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-brand",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Primary easing token (--ease-brand) for navigation underlines and crisp architectural state shifts."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Secondary exponential ease-out token (--ease-out-expo) defined in root CSS."
+      },
+      {
+        "name": "gsap-reveal",
+        "value": "y: 12px-16px, duration: 0.65s-0.7s, stagger: 0.06-0.08, power3.out",
+        "purpose": "Hero entry and ScrollTrigger once-only manifesto reveals, skipped when prefers-reduced-motion: reduce."
+      },
+      {
+        "name": "client-marquee",
+        "value": "clientMarquee 52s linear infinite (paused on hover)",
+        "purpose": "Continuous horizontal client rail scroll in Hero; disabled when prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Dark Button",
+      "kind": "button",
+      "refersTo": "button-primary-dark",
+      "description": "Default architectural CTA on light surfaces using Clarity Black resting fill and Signal Blue hover.",
+      "html": "<button type=\"button\" class=\"ds-btn-dark\"><span>Start a Conversation</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></button>",
+      "css": ".ds-btn-dark { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 14px 24px; background: var(--nw-black, #262626); color: var(--nw-white, #FFFFFF); border: 0; border-radius: 2px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-dark:hover { background: var(--nw-blue-ink, #076C96); } .ds-btn-dark:focus-visible { outline: 2px solid var(--nw-blue-ink, #076C96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Primary Signal Blue Button",
+      "kind": "button",
+      "refersTo": "button-primary-blue",
+      "description": "High-emphasis Signal Blue CTA used inside dark Clarity Black bands and mobile menu drawers.",
+      "html": "<button type=\"button\" class=\"ds-btn-blue\"><span>Start a Conversation</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-blue { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 14px 28px; background: var(--nw-blue-ink, #076C96); color: var(--nw-white, #FFFFFF); border: 0; border-radius: 2px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-blue:hover { background: var(--nw-blue-ink-hover, #055475); } .ds-btn-blue:focus-visible { outline: 2px solid var(--nw-blue-ink, #076C96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Inverted White & Ghost Hero Buttons",
+      "kind": "button",
+      "refersTo": "button-inverted-white",
+      "description": "Hero and closing brand-gradient action pair combining solid Paper White primary CTA with transparent bordered ghost CTA.",
+      "html": "<div class=\"ds-btn-pair\"><button type=\"button\" class=\"ds-btn-white\"><span>Start a Conversation</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></button><button type=\"button\" class=\"ds-btn-ghost\">Explore Our Work</button></div>",
+      "css": ".ds-btn-pair { display: flex; flex-wrap: wrap; gap: 14px; padding: 20px; background: radial-gradient(circle at 86% 14%, #0E9ED9 0%, #096191 40%, #0A2E75 72%, #091345 100%); } .ds-btn-white { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 14px 28px; background: var(--nw-white, #FFFFFF); color: var(--nw-black, #262626); border: 0; border-radius: 2px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease; } .ds-btn-white:hover { background: var(--nw-light, #F7F7F7); } .ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 14px 28px; background: transparent; color: var(--nw-white, #FFFFFF); border: 1px solid rgba(255,255,255,0.55); border-radius: 2px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease; } .ds-btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #FFFFFF; } .ds-btn-white:focus-visible, .ds-btn-ghost:focus-visible { outline: 2px solid var(--nw-blue-ink, #076C96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Architectural Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Sharp 2px-radius Insight White field transitioning to Paper White and Signal Blue border on focus.",
+      "html": "<div class=\"ds-field-group\"><label class=\"ds-field-label\" for=\"ds-name\">Name *</label><input id=\"ds-name\" class=\"ds-input\" type=\"text\" placeholder=\"Your full name\" /></div>",
+      "css": ".ds-field-group { display: flex; flex-direction: column; gap: 8px; } .ds-field-label { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nw-black, #262626); } .ds-input { width: 100%; min-height: 48px; padding: 14px 16px; background: var(--nw-light, #F7F7F7); color: var(--nw-black, #262626); border: 1px solid var(--nw-grey, #CCCCCC); border-radius: 2px; font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; caret-color: var(--nw-blue-ink, #076C96); transition: background-color 150ms ease, border-color 150ms ease; } .ds-input::placeholder { color: #666666; } .ds-input:focus { outline: none; background: var(--nw-white, #FFFFFF); border-color: var(--nw-blue-ink, #076C96); } .ds-input:focus-visible { outline: 2px solid var(--nw-blue-ink, #076C96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Primary Architectural Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "68px translucent Paper White header with 1px Logic Grey rule and Signal Blue scaleX underline indicators.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-inner\"><span class=\"ds-nav-brand\">Next Wave</span><nav class=\"ds-nav-links\" aria-label=\"Primary\"><a href=\"#work\" class=\"ds-nav-link\" data-active=\"true\">WORK</a><a href=\"#about\" class=\"ds-nav-link\">ABOUT</a><a href=\"#services\" class=\"ds-nav-link\">SERVICES</a><a href=\"#contact\" class=\"ds-nav-link\">CONTACT</a></nav></div></header>",
+      "css": ".ds-nav { width: 100%; height: 68px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--nw-grey, #CCCCCC); color: var(--nw-black, #262626); } .ds-nav-inner { height: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; } .ds-nav-brand { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; font-size: 16px; color: var(--nw-black, #262626); } .ds-nav-links { display: flex; align-items: center; gap: 32px; } .ds-nav-link { position: relative; padding: 6px 0; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--nw-black, #262626); transition: color 180ms ease; } .ds-nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--nw-blue-ink, #076C96); transform: scaleX(0); transform-origin: left center; transition: transform 220ms var(--ease-brand, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-nav-link:hover, .ds-nav-link[data-active='true'] { color: var(--nw-blue-ink, #076C96); } .ds-nav-link:hover::after, .ds-nav-link[data-active='true']::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--nw-blue-ink, #076C96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Swiss Ruled Sector Plate",
+      "kind": "card",
+      "refersTo": "card-architectural",
+      "description": "Sharp 0px-corner architectural ledger cell bounded by 1px Logic Grey rules and tonal hover tint.",
+      "html": "<article class=\"ds-plate\"><h3 class=\"ds-plate-title\">Retail &amp; Consumer</h3><p class=\"ds-plate-desc\">Fast-moving goods, lifestyle retail &amp; consumer brand ecosystems.</p></article>",
+      "css": ".ds-plate { min-height: 172px; padding: 32px; background: var(--nw-white, #FFFFFF); border: 1px solid var(--nw-grey, #CCCCCC); border-radius: 0; display: flex; flex-direction: column; justify-content: space-between; transition: background-color 150ms ease; } .ds-plate:hover { background: var(--nw-light, #F7F7F7); } .ds-plate-title { margin: 0 0 12px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--nw-black, #262626); transition: color 150ms ease; } .ds-plate:hover .ds-plate-title { color: var(--nw-blue-ink, #076C96); } .ds-plate-desc { margin: 0; font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 1.625; color: rgba(38, 38, 38, 0.75); }"
+    },
+    {
+      "name": "Clarity Black Contrast Plate",
+      "kind": "card",
+      "refersTo": "card-dark-plate",
+      "description": "High-contrast dark statement block pairing Clarity Black background with Paper White and Positive Blue accents.",
+      "html": "<section class=\"ds-dark-plate\"><blockquote class=\"ds-dark-quote\">“Great marketing begins with understanding the business behind the brand — work that moves <span class=\"ds-accent\">business forward</span>.”</blockquote><div class=\"ds-dark-meta\"><span>Abdullah Al Kaisar · Founder &amp; CEO</span><span>Chattogram, Bangladesh</span></div></section>",
+      "css": ".ds-dark-plate { padding: 48px; background: var(--nw-black, #262626); color: var(--nw-white, #FFFFFF); border: 1px solid var(--nw-black, #262626); border-radius: 0; } .ds-dark-quote { margin: 0 0 32px; max-width: 44ch; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 24px; font-weight: 500; line-height: 1.375; letter-spacing: -0.015em; color: var(--nw-white, #FFFFFF); } .ds-dark-quote .ds-accent { color: var(--nw-blue, #0E9ED9); font-weight: 600; } .ds-dark-meta { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--nw-grey, #CCCCCC); }"
+    },
+    {
+      "name": "Brand Gradient Plate with N-Wave Outline",
+      "kind": "custom",
+      "refersTo": "card-dark-plate",
+      "description": "Signature .bg-nw-gradient radial field anchored in Deep Navy with Positive Blue glow and geometric N-wave linework.",
+      "html": "<section class=\"ds-brand-plate\"><svg class=\"ds-brand-wave\" viewBox=\"0 0 100 100\" fill=\"none\" aria-hidden=\"true\"><path d=\"M11 5.8 C31 5.8, 43 13.5, 60.9 23.4 L60.9 5.6 L89 5.6 L89 56.8 C67 59.5, 48 49.0, 39.1 40.2 C30 31.4, 21 33.6, 11 33.6 Z\" stroke=\"currentColor\" stroke-opacity=\"0.2\" stroke-width=\"0.9\" stroke-linejoin=\"miter\"/><path d=\"M11 46.1 C29 46.1, 41 53.0, 50 58.6 C62 66.0, 74 67.8, 89 65.2 L89 97.0 C73 97.6, 56 91.5, 39.1 81.0 L39.1 97.3 L11 97.3 Z\" stroke=\"currentColor\" stroke-opacity=\"0.2\" stroke-width=\"0.9\" stroke-linejoin=\"miter\"/></svg><div class=\"ds-brand-content\"><h3 class=\"ds-brand-title\">From Bangladesh. For The World.</h3><p class=\"ds-brand-copy\">Rooted in local insight, built with global ambition.</p></div></section>",
+      "css": ".ds-brand-plate { position: relative; overflow: hidden; padding: 48px; background: radial-gradient(circle at 86% 14%, #0E9ED9 0%, #096191 40%, #0A2E75 72%, #091345 100%); color: var(--nw-white, #FFFFFF); border-radius: 0; } .ds-brand-wave { position: absolute; right: -40px; bottom: -40px; width: 240px; height: 240px; color: var(--nw-white, #FFFFFF); pointer-events: none; } .ds-brand-content { position: relative; z-index: 1; } .ds-brand-title { margin: 0 0 16px; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 32px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; color: var(--nw-white, #FFFFFF); } .ds-brand-copy { margin: 0; font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.625; color: rgba(255,255,255,0.95); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Swiss Studio Monograph",
+    "overview": "Next Wave's visual system translates its official Brand Guidelines directly onto the web as an architectural Swiss monograph. Rather than relying on soft SaaS cards, rounded pill badges, or ambient shadows, information is organized inside continuous hairline grids (`1px` dividers), generous editorial gutters, and decisive tonal contrast between Paper White (`#FFFFFF`), Insight White (`#F7F7F7`), and Clarity Black (`#262626`).\n\nOpening and closing flagship sections anchor the brand in a full-bleed radial gradient field moving from Positive Blue (`#0E9ED9`) to Deep Navy (`#091345`), accented by the thin geometric outline of the Next Wave `N`-wave mark. Between those two bookends, alternating white and warm-light paper bands pace dense agency capabilities, asymmetric 30/70 editorial spreads, optically normalized client matrices, and long-form strategy writing with calm authority.\n\nMotion is structural and restrained: subtle vertical reveals on entry (`12px` to `16px` upward settle via GSAP `power3.out`), crisp hover color inversions, a slow linear marquee for the client strip (`52s` cycle), and zero motion under `prefers-reduced-motion: reduce`.",
+    "keyCharacteristics": [
+      "Continuous `1px` Logic Grey (`#CCCCCC`) architectural grid dividers with shared flush edges and `0px` structural container corners.",
+      "Alternating paper rhythm (`#F7F7F7` and `#FFFFFF`) framed by full-bleed Clarity Black (`#262626`) and Positive Blue-to-Navy (`.bg-nw-gradient`) statement plates.",
+      "Geometric `Poppins` display typography paired with `Manrope` body prose constrained to readable measures (`34ch–58ch`).",
+      "Interactive controls restricted to sharp `2px` architectural corners (`rounded-[2px]`) and high-contrast solid hover fills."
+    ],
+    "rules": [
+      {
+        "name": "The Surface-Split Blue Rule",
+        "body": "Use Positive Blue (`#0E9ED9`) exclusively on dark `#262626` / `#091345` plates and gradient highlights; switch to Signal Blue (`#076C96`) for all text, links, outlines, and button fills on `#FFFFFF` / `#F7F7F7` light surfaces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brand Field Gradient Rule",
+        "body": "Full-bleed opening (`Hero`), global ambition (`Industries`), and closing (`CTA`) plates use `.bg-nw-gradient` (`radial-gradient(circle at 86% 14%, #0E9ED9 0%, #096191 40%, #0A2E75 72%, #091345 100%)`), keeping the deeper `#091345` anchor beneath left-aligned headline copy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Measure Rule",
+        "body": "Display and Headline `Poppins` copy is constrained to crisp editorial widths (`18ch–34ch`) with `[text-wrap:balance]`, while `Manrope` body blocks hold `40ch–58ch` with `[text-wrap:pretty]` so multi-column splits never stretch across full `1560px` rows.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Kicker Rule",
+        "body": "Section headlines (`h2`/`h1`) stand on their own weight inside a horizontal header flex row paired with a right-aligned summary sentence—never introduce pill tags or dot-eyebrow kickers above section headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Never apply `box-shadow` to in-flow cards, form containers, navbars, or grid plates; reserve elevation exclusively for viewport-pinned overlays and floating utility launchers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use continuous `1px` Logic Grey (`#CCCCCC`) borders and collapsed `border-t border-l` + `border-r border-b` grid cells to establish structure across sections.",
+      "**Do** enforce the surface-split blue rule: `#0E9ED9` Positive Blue on `#262626` / `#091345` dark and gradient plates; `#076C96` Signal Blue for all links, focus rings, icons, and fills on `#FFFFFF` / `#F7F7F7` surfaces.",
+      "**Do** pair `Poppins` (`500`/`600`) display/labels with `Manrope` (`400`/`500`) prose constrained to `40ch–58ch` inside `max-w-[1560px]` containers.",
+      "**Do** limit corner rounding strictly to `0px` on structural containers/cards and `2px` (`rounded-[2px]`) on interactive controls, inputs, and floating chrome.",
+      "**Do** keep founder prior-experience logos in a visually separated, attribution-labeled grid apart from the 34 NextWave agency client cells.",
+      "**Do** gate GSAP entry reveals and marquee loops behind `prefers-reduced-motion: reduce`."
+    ],
+    "donts": [
+      "**Don't** introduce SaaS card soup—never apply `rounded-xl`–`rounded-3xl`, pill badges (`rounded-full`), icon-in-tinted-box grids, or resting drop shadows to content cards.",
+      "**Don't** place dot-eyebrow kickers or decorative category pills above `h1`/`h2` section headlines.",
+      "**Don't** use Positive Blue (`#0E9ED9`) for body text, links, or button labels on white (`#FFFFFF`) or Insight White (`#F7F7F7`) surfaces.",
+      "**Don't** introduce additional font families beyond `Poppins` and `Manrope`, or pastel tinted container fills; stay strictly within the monochrome paper, Clarity Black, and blue signal surfaces.",
+      "**Don't** shrink interactive buttons or icon controls below `44px × 44px` (`48px` minimum height for rectangular CTAs and inputs)."
+    ]
+  }
+}

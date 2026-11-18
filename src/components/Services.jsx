@@ -1,171 +1,229 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowUpRight, Compass, Palette, LineChart, Film, Megaphone } from 'lucide-react';
 import Link from 'next/link';
+import { BrandWaveOutline } from './BrandWatermark';
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  ChartIcon,
+  CompassIcon,
+  MegaphoneIcon,
+  PaletteIcon,
+  ProductionIcon,
+} from './Icons';
 
 const servicesData = [
   {
-    id: "01",
-    name: "STRATEGY",
-    icon: Compass,
+    name: "Strategy",
+    icon: CompassIcon,
     disciplines: "Brand Strategy · Communication Planning · Campaign Design · Media Strategy",
     desc: "We turn business objectives into clear strategic direction.",
-    tag: "Core Strategic Foundation"
   },
   {
-    id: "02",
-    name: "CREATIVE & DESIGN",
-    icon: Palette,
+    name: "Creative & Design",
+    icon: PaletteIcon,
     disciplines: "Brand Identity · Graphic Design · Copywriting · Audio-Visual · Content · Packaging",
     desc: "We turn strategic thinking into ideas, stories and experiences people remember.",
-    tag: "Brand Expression"
   },
   {
-    id: "03",
-    name: "DIGITAL & PERFORMANCE",
-    icon: LineChart,
+    name: "Digital & Performance",
+    icon: ChartIcon,
     disciplines: "Social Media · Paid Campaigns · SEO · Web Design · Performance Marketing",
     desc: "We connect brands with audiences across digital channels and turn attention into action.",
-    tag: "Growth & ROI"
   },
   {
-    id: "04",
-    name: "PRODUCTION & ACTIVATION",
-    icon: Film,
+    name: "Production & Activation",
+    icon: ProductionIcon,
     disciplines: "Event Management · OVC & TVC · Photography · Experiential & BTL Campaigns",
     desc: "We bring ideas to life through production, experiences and brand activation.",
-    tag: "On-Ground & Media"
   },
   {
-    id: "05",
-    name: "PR & COMMUNICATIONS",
-    icon: Megaphone,
+    name: "PR & Communications",
+    icon: MegaphoneIcon,
     disciplines: "Corporate Affairs · CSR & Advocacy · Reputation Management · Crisis Communication",
     desc: "We help organisations communicate with clarity, consistency and confidence.",
-    tag: "Reputation & Corporate"
   }
 ];
 
 const Services = () => {
-  const [activeService, setActiveService] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeService = servicesData[activeIndex];
+  const ActiveIcon = activeService.icon;
+  const activeDeliverables = activeService.disciplines.split(' · ');
+
+  const handleKeyDown = (e, idx) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      setActiveIndex((idx + 1) % servicesData.length);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      setActiveIndex((idx - 1 + servicesData.length) % servicesData.length);
+    }
+  };
 
   return (
-    <section id="services" className="bg-[#090909] text-white w-full py-28 md:py-36 relative overflow-hidden border-b border-white/10">
-      
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#0E9ED9]/5 rounded-full filter blur-[150px] pointer-events-none" />
-
-      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
-        
+    <section id="services" className="bg-[#F7F7F7] text-[#262626] w-full py-20 md:py-28 relative border-b border-[#CCCCCC]">
+      <div className="max-w-[1560px] mx-auto px-6 sm:px-10 lg:px-14">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20 pb-8 border-b border-white/10">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#0E9ED9]" />
-              <span className="text-xs md:text-sm font-mono tracking-[0.25em] text-[#9DD6F3] uppercase font-semibold">
-                CAPABILITIES & SOLUTIONS
-              </span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-black text-white tracking-tight uppercase">
-              THE 360 SPECTRUM
-            </h2>
-          </div>
-          <p className="text-gray-400 text-base md:text-lg max-w-md font-sans leading-relaxed">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-semibold text-[#262626] tracking-[-0.02em]">
+            The 360 Spectrum
+          </h2>
+          <p className="text-[#262626]/75 text-sm sm:text-base max-w-[44ch] font-sans leading-relaxed [text-wrap:pretty]">
             End-to-end marketing capabilities, connecting commercial insight to lasting brand impact.
           </p>
         </div>
 
-        {/* Interactive Capability Rows */}
-        <div className="flex flex-col gap-3.5">
-          {servicesData.map((service, index) => {
-            const Icon = service.icon;
-            const isHovered = activeService === index;
+        {/* Interactive Split Capability Console (5:7 Brand Guide Swiss Architecture) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 border border-[#CCCCCC] bg-white">
+          {/* Left Selector Column */}
+          <div
+            role="tablist"
+            aria-label="Agency capabilities"
+            className="lg:col-span-5 divide-y divide-[#CCCCCC] lg:border-r lg:border-[#CCCCCC] border-b lg:border-b-0 flex flex-col"
+          >
+            {servicesData.map((service, idx) => {
+              const Icon = service.icon;
+              const isActive = idx === activeIndex;
+              const count = service.disciplines.split(' · ').length;
 
-            return (
-              <div 
-                key={service.id}
-                onMouseEnter={() => setActiveService(index)}
-                onMouseLeave={() => setActiveService(null)}
-                className={`group relative rounded-2xl p-6 sm:p-8 md:p-9 transition-all duration-300 border ${
-                  isHovered 
-                    ? 'bg-white/[0.07] border-[#0E9ED9]/50 shadow-[0_15px_40px_rgba(0,0,0,0.6)] translate-x-1.5' 
-                    : 'bg-[#111111] border-white/10 hover:border-white/20'
-                }`}
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                  
-                  {/* Left: Number, Icon, Name */}
-                  <div className="flex items-start sm:items-center gap-6 lg:w-[35%] shrink-0">
-                    <span className={`font-mono text-sm font-bold tracking-widest transition-colors ${
-                      isHovered ? 'text-[#9DD6F3]' : 'text-gray-500'
-                    }`}>
-                      {service.id}
-                    </span>
-                    <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isHovered ? 'bg-[#0E9ED9] text-white' : 'bg-white/5 text-gray-300'
-                      }`}>
-                        <Icon size={20} />
-                      </div>
-                      <h3 className="font-poppins font-bold text-xl sm:text-2xl tracking-tight uppercase text-white">
+              return (
+                <button
+                  key={service.name}
+                  type="button"
+                  role="tab"
+                  id={`service-tab-${idx}`}
+                  aria-selected={isActive}
+                  aria-controls="service-spotlight-panel"
+                  onClick={() => setActiveIndex(idx)}
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onKeyDown={(e) => handleKeyDown(e, idx)}
+                  className={`w-full text-left px-6 sm:px-8 py-6 lg:py-7 flex items-center justify-between gap-4 transition-colors duration-150 flex-1 ${
+                    isActive
+                      ? 'bg-[#262626] text-white'
+                      : 'bg-white hover:bg-[#F7F7F7] text-[#262626]'
+                  }`}
+                >
+                  <div className="flex items-start sm:items-center gap-4">
+                    <Icon
+                      size={22}
+                      className={`mt-0.5 sm:mt-0 transition-colors duration-150 ${
+                        isActive ? 'text-[#0E9ED9]' : 'text-[#076C96]'
+                      }`}
+                    />
+                    <div>
+                      <span className="block font-poppins font-semibold text-lg sm:text-xl tracking-[-0.015em]">
                         {service.name}
-                      </h3>
+                      </span>
+                      <span
+                        className={`block font-sans text-xs mt-1 ${
+                          isActive ? 'text-[#CCCCCC]' : 'text-[#262626]/70'
+                        }`}
+                      >
+                        {count} core disciplines
+                      </span>
                     </div>
                   </div>
 
-                  {/* Middle: Core Impact & Disciplines */}
-                  <div className="lg:w-[45%] flex flex-col justify-center">
-                    <p className={`font-sans font-medium text-sm md:text-base leading-relaxed mb-1.5 transition-colors ${
-                      isHovered ? 'text-white' : 'text-gray-300'
-                    }`}>
-                      {service.desc}
-                    </p>
-                    <p className="text-xs font-mono tracking-wide text-gray-400">
-                      {service.disciplines}
-                    </p>
-                  </div>
+                  <ArrowRightIcon
+                    size={18}
+                    className={`transition-transform duration-150 ${
+                      isActive
+                        ? 'text-[#0E9ED9] translate-x-0.5'
+                        : 'text-[#262626]/65'
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
 
-                  {/* Right: Category Tag & Arrow Link */}
-                  <div className="lg:w-[20%] flex items-center justify-between lg:justify-end gap-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5">
-                    <span className={`text-[10px] font-mono uppercase tracking-wider hidden xl:inline-block px-3 py-1 rounded-full border ${
-                      isHovered ? 'bg-[#0E9ED9]/15 text-[#9DD6F3] border-[#0E9ED9]/30' : 'bg-white/5 text-gray-400 border-white/10'
-                    }`}>
-                      {service.tag}
-                    </span>
-                    <Link
-                      href="/contact"
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
-                        isHovered 
-                          ? 'bg-white text-black scale-110 shadow-lg' 
-                          : 'bg-white/10 text-white group-hover:bg-white/20'
-                      }`}
-                      title="Enquire about this capability"
+          {/* Right Executive Spotlight Panel */}
+          <div
+            id="service-spotlight-panel"
+            role="tabpanel"
+            aria-labelledby={`service-tab-${activeIndex}`}
+            className="lg:col-span-7 bg-[#262626] text-white flex flex-col justify-between"
+          >
+            {/* Brand Gradient Statement Header */}
+            <div className="bg-nw-gradient p-8 sm:p-10 lg:p-12 border-b border-white/15 relative overflow-hidden">
+              <BrandWaveOutline
+                className="pointer-events-none select-none absolute -right-10 -bottom-12 w-56 h-56 text-white"
+                strokeOpacity={0.2}
+              />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3.5 mb-4">
+                  <ActiveIcon size={32} className="text-white" />
+                  <h3 className="font-poppins font-semibold text-3xl sm:text-4xl tracking-[-0.02em] text-white">
+                    {activeService.name}
+                  </h3>
+                </div>
+
+                <p className="font-poppins font-medium text-base sm:text-lg text-white/95 leading-relaxed max-w-[44ch] [text-wrap:pretty]">
+                  {activeService.desc}
+                </p>
+              </div>
+            </div>
+
+            {/* Structured Ruled Deliverable Matrix */}
+            <div className="p-8 sm:p-10 lg:p-12 flex-1 flex flex-col justify-between gap-8 bg-[#262626]">
+              <div>
+                <p className="font-poppins text-xs font-medium uppercase tracking-[0.14em] text-[#0E9ED9] mb-4">
+                  Included Capabilities
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-l border-white/15">
+                  {activeDeliverables.map((item) => (
+                    <div
+                      key={item}
+                      className="border-r border-b border-white/15 px-5 py-4 flex items-center justify-between gap-3 bg-[#262626]"
                     >
-                      <ArrowUpRight size={18} />
-                    </Link>
-                  </div>
-
+                      <span className="font-sans text-sm sm:text-base text-[#F7F7F7] font-medium">
+                        {item}
+                      </span>
+                      <span className="w-1.5 h-1.5 bg-[#0E9ED9] shrink-0" aria-hidden="true" />
+                    </div>
+                  ))}
+                  {activeDeliverables.length % 2 === 1 && (
+                    <div className="hidden sm:flex border-r border-b border-white/15 px-5 py-4 items-center text-xs font-sans text-[#CCCCCC]">
+                      Integrated 360 Alignment
+                    </div>
+                  )}
                 </div>
               </div>
-            );
-          })}
+
+              {/* Action Rail */}
+              <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
+                <span className="text-xs sm:text-sm font-sans text-[#CCCCCC]">
+                  Tailored scope &amp; execution roadmap
+                </span>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2.5 bg-white hover:bg-[#F7F7F7] text-[#262626] px-7 py-3.5 rounded-[2px] font-poppins font-semibold text-xs uppercase tracking-[0.12em] transition-colors duration-150 min-h-[48px]"
+                >
+                  <span>Enquire About {activeService.name}</span>
+                  <ArrowUpRightIcon size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Callout */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <p className="text-sm font-sans text-gray-400">
+        <div className="mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <p className="text-sm font-sans text-[#262626]/75">
             Need a bespoke integrated solution across strategy, creative, and performance?
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-xs font-poppins font-bold text-[#9DD6F3] hover:text-white transition-colors uppercase tracking-wider"
+            className="inline-flex items-center gap-2 text-xs font-poppins font-semibold text-[#076C96] hover:text-[#262626] transition-colors uppercase tracking-[0.12em]"
           >
-            <span>DISCUSS YOUR OBJECTIVES</span>
-            <ArrowUpRight size={15} />
+            <span>Discuss Your Objectives</span>
+            <ArrowUpRightIcon size={16} />
           </Link>
         </div>
-
       </div>
     </section>
   );
