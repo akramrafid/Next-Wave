@@ -11,36 +11,11 @@ import {
   SendIcon,
 } from './Icons';
 
-const SYSTEM_PROMPT = `You are a helpful marketing AI assistant for Next Wave (NextWave 360 Solutions), an elite digital marketing agency based in Chattogram, Bangladesh, serving international clients worldwide.
-Your primary goal is to answer marketing-related questions and analyze any provided images/materials. 
-You must reply in both Bengali and English. For every response, provide the English version first, followed by the Bengali translation.
-Ensure your tone is professional, brand-aligned, and helpful. 
-
-Background Info about Next Wave:
-- Identity & Location: An elite digital marketing agency based in Chattogram, Bangladesh, serving international clients worldwide.
-- Philosophy: Most agencies focus on impressions and vanity metrics. We focus on "momentum that converts".
-- Services & Offerings: Full-stack marketing, SEO, paid media (Google, Meta, TikTok), high-fidelity creative production, Conversion Rate Optimization (CRO), Brand Audits, Competitor Analysis, and Market Positioning.
-- Features: We provide 'Precision Audits' (data-driven strategy), 'Bold Campaigns' (creative engineering), and 'Data Scaling' (relentless optimization). Past results include ROI increased by 145%, CPA reduced by 30%, Conversion rate +2.5%.
-- 3-Step Protocol: 
-  1) Discover (Audit): We audit your brand, market, and competitors before writing a brief.
-  2) Create (Craft): Strategy meets craft; campaigns engineered for attention.
-  3) Amplify (Scale): We deploy, measure, optimize, and scale relentlessly.
-- Timelines & Onboarding: Onboarding takes 1-2 weeks. Campaigns go live 48-72 hours after blueprint approval.
-- Security & Ownership: 100% GDPR/CCPA compliant. Clients own their ad accounts and creative assets forever.
-
-Basic Pricing & Rates:
-- Dollar Rate: ৳155 per dollar
-- Minimum Dollar Spend: $30
-- Per Dollar Cost for Follower: $0.2 – $0.10
-
-IMPORTANT: Do NOT use any Markdown formatting in your response. Do not use asterisks (* or **) for bold text or bullet points. Provide plain text only.
-You must answer questions related to marketing, business, pricing, and any questions about Next Wave agency itself (such as our location, services, operations, etc.). Do not answer questions that are completely unrelated to these topics. If unrelated, politely redirect them to marketing or Next Wave topics in both languages.`;
-
 const INITIAL_MESSAGES = [
   {
     role: 'assistant',
     content:
-      'Hello! I am the Next Wave Marketing Assistant. How can I help you with your marketing needs today?\n\nআসসালামু আলাইকুম! আমি নেক্সটওয়েভ মার্কেটিং অ্যাসিস্ট্যান্ট। আজ আমি কীভাবে আপনার মার্কেটিং প্রয়োজনে সাহায্য করতে পারি?',
+      'Hello! Ask me anything about Next Wave’s 360 marketing services, client work, leadership, office location, or campaign rates. (বাংলাতেও জিজ্ঞাসা করতে পারেন)',
   },
 ];
 
@@ -52,18 +27,22 @@ export default function Chatbot() {
   const [attachment, setAttachment] = useState(null);
   const [uploadError, setUploadError] = useState('');
   const fileInputRef = useRef(null);
-  const messagesEndRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   const launcherRef = useRef(null);
   const inputRef = useRef(null);
   const hasOpenedOnceRef = useRef(false);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (isOpen && messages.length > 1) {
+      scrollToBottom();
+    }
+  }, [isOpen, messages]);
 
   useEffect(() => {
     if (isOpen) {
@@ -126,6 +105,7 @@ export default function Chatbot() {
   const sendMessage = async (textToSend, attachToSend = null) => {
     if ((!textToSend.trim() && !attachToSend) || isLoading) return;
 
+    const historyMessages = messages.slice(1).slice(-8);
     setInput('');
     setAttachment(null);
     setUploadError('');
@@ -133,21 +113,18 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      const apiMessages = [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages.map((m) => {
-          if (m.attachment) {
-            return {
-              role: m.role,
-              content: [
-                { type: 'text', text: m.content || 'Attached image:' },
-                { type: 'image_url', image_url: { url: m.attachment } },
-              ],
-            };
-          }
-          return { role: m.role, content: m.content };
-        }),
-      ];
+      const apiMessages = historyMessages.map((m) => {
+        if (m.attachment) {
+          return {
+            role: m.role,
+            content: [
+              { type: 'text', text: m.content || 'Attached image:' },
+              { type: 'image_url', image_url: { url: m.attachment } },
+            ],
+          };
+        }
+        return { role: m.role, content: m.content };
+      });
 
       let currentMessageContent = textToSend;
       if (attachToSend) {
@@ -165,20 +142,56 @@ export default function Chatbot() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          stream: true,
           messages: apiMessages,
         }),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.error?.message || response.statusText || 'Unknown API Error');
+        let errMessage = response.statusText || 'Unknown API Error';
+        try {
+          const data = await response.json();
+          errMessage = data.error?.message || errMessage;
+        } catch {}
+        throw new Error(errMessage);
       }
 
-      if (data.choices && data.choices.length > 0) {
-        setMessages((prev) => [...prev, { role: 'assistant', content: data.choices[0].message.content }]);
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        const data = await response.json();
+        const reply = data?.choices?.[0]?.message?.content;
+        if (!reply) throw new Error('Invalid response structure from API');
+        setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+      } else if (response.body) {
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let streamedText = '';
+        let appended = false;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          if (!chunk) continue;
+          streamedText += chunk;
+          if (!appended) {
+            appended = true;
+            setIsLoading(false);
+            setMessages((prev) => [...prev, { role: 'assistant', content: streamedText }]);
+          } else {
+            setMessages((prev) => {
+              const next = [...prev];
+              next[next.length - 1] = { role: 'assistant', content: streamedText };
+              return next;
+            });
+          }
+        }
+
+        if (!appended) {
+          throw new Error('Empty response received from assistant.');
+        }
       } else {
-        throw new Error('Invalid response structure from API');
+        throw new Error('Empty response body from API');
       }
     } catch (error) {
       console.error('Chatbot API Error:', error);
@@ -186,7 +199,7 @@ export default function Chatbot() {
         ...prev,
         {
           role: 'assistant',
-          content: `API Error: ${error.message}\n\nদুঃখিত, আমি একটি ত্রুটির সম্মুখীন হয়েছি। (${error.message})`,
+          content: `Sorry, could not complete your request right now (${error.message}). You can reach us on WhatsApp (+880 1711-204614) or via our Contact page.`,
         },
       ]);
     } finally {
@@ -200,9 +213,9 @@ export default function Chatbot() {
   };
 
   const suggestedQuestions = [
-    'How much is the dollar rate?',
-    'Minimum dollar spends?',
-    'Per dollar cost for follower?',
+    'What services does Next Wave offer?',
+    'Dollar rate & minimum spend?',
+    'Office & Founder info?',
   ];
 
   return (
@@ -258,7 +271,7 @@ export default function Chatbot() {
               disabled={!canClear}
               aria-label="Clear conversation"
               title="Clear conversation"
-              className="w-11 h-11 flex items-center justify-center text-[#CCCCCC] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="w-11 h-11 flex items-center justify-center text-white/85 hover:text-white disabled:text-white/35 disabled:cursor-not-allowed transition-colors"
             >
               <RestartIcon size={18} />
             </button>
@@ -266,7 +279,7 @@ export default function Chatbot() {
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close assistant"
-              className="w-11 h-11 flex items-center justify-center text-[#CCCCCC] hover:text-white transition-colors"
+              className="w-11 h-11 flex items-center justify-center text-white/85 hover:text-white transition-colors"
             >
               <CloseCircleIcon size={20} />
             </button>
@@ -280,7 +293,7 @@ export default function Chatbot() {
           </Link>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F7F7F7]">
+        <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F7F7F7]">
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div
@@ -326,7 +339,6 @@ export default function Chatbot() {
               </div>
             </div>
           )}
-          <div ref={messagesEndRef} />
         </div>
 
         {uploadError && (
