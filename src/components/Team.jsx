@@ -63,7 +63,7 @@ const Team = () => {
               <div className="flex items-center justify-between w-full max-w-md mt-6 px-2">
                 <div className="flex items-center gap-3">
                   <a 
-                    href="https://linkedin.com/in/kaisar" 
+                    href="https://bd.linkedin.com/in/abdullahkaisar" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0E9ED9] text-white flex items-center justify-center transition-colors"

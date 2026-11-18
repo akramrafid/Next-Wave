@@ -98,8 +98,8 @@ const ContactClient = () => {
                       Headquarters
                     </h4>
                     <p className="text-gray-300 text-sm leading-relaxed font-medium">
-                      House 66, Road 06, O. R. Nizam R/A,<br />
-                      GEC Circle, Chittagong, Bangladesh
+                      Ali Bhaban, Shahid Abdul Halim,<br />
+                      11 Mohammad Ali Road, Chattogram 4203, Bangladesh
                     </p>
                   </div>
                 </div>
@@ -328,14 +328,14 @@ const ContactClient = () => {
         {/* ── Map Location ────────────────────────────────────────── */}
         <div className="w-full h-[380px] md:h-[420px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
           <iframe
-            src="https://maps.google.com/maps?q=NextWave+360+Solutions,+House+66+4th+Floor,+Road+6A,+O.R.+Nizam+Road,+Chattogram+4223,+Bangladesh&z=16&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.47!2d91.8232174!3d22.3579668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9c309f91fad%3A0xaf671968541e87d7!2sNextWave%20360%20Solutions!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
             width="100%"
             height="100%"
             style={{ border: 0, display: 'block' }}
-            allowFullScreen=""
+            allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="grayscale invert contrast-125 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700"
+            className="w-full h-full grayscale invert contrast-125 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700"
             title="NextWave 360 Solutions Location"
           />
         </div>

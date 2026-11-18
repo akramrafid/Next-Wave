@@ -361,7 +361,7 @@ const GoogleReviews = () => {
         {/* Google attribution */}
         <div style={{ textAlign: 'center', marginTop: '32px' }}>
           <a
-            href="https://maps.google.com/maps?q=NextWave+360+Solutions+Chattogram"
+            href="https://www.google.com/maps/search/?api=1&query=NextWave+360+Solutions&query_place_id=ChIJrR_5CcPZrDAR14ceVGgZZ68"
             target="_blank"
             rel="noopener noreferrer"
             style={{

@@ -7,8 +7,8 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
   { label: 'WORK',     type: 'hash', target: '#work'     },
-  { label: 'SERVICES', type: 'hash', target: '#services'  },
   { label: 'ABOUT',    type: 'hash', target: '#about'     },
+  { label: 'SERVICES', type: 'hash', target: '#services'  },
   { label: 'APPROACH', type: 'hash', target: '#approach'  },
   { label: 'INSIGHTS', type: 'hash', target: '#insights'  },
   { label: 'CONTACT',  type: 'link', target: '/contact'   },

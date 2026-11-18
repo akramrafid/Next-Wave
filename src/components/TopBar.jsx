@@ -49,7 +49,7 @@ const tickerItems = [
   'Strategy · Creative · Digital · Execution',
   'Founded in Bangladesh · Built with Global Ambition',
   'Marketing that Moves Business Forward',
-  'House 66, Road 06, O. R. Nizam R/A, Chittagong',
+  'Ali Bhaban, Shahid Abdul Halim, 11 Mohammad Ali Road, Chattogram',
   'nextwaves.agency',
 ];
 

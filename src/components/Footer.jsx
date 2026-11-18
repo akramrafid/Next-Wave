@@ -129,7 +129,7 @@ const Footer = () => {
             {/* Address */}
             <div className="flex items-start gap-3 text-sm text-gray-300">
               <MapPin size={16} className="text-[#0E9ED9] shrink-0 mt-1" />
-              <span>House 66, Road 06, O. R. Nizam R/A, GEC Circle, Chittagong, Bangladesh</span>
+              <span>Ali Bhaban, Shahid Abdul Halim, 11 Mohammad Ali Road, Chattogram 4203, Bangladesh</span>
             </div>
 
             {/* Email */}
