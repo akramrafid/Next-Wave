@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import {
   AlertIcon,
-  ChatIcon,
   CloseCircleIcon,
   PaperclipIcon,
   RefreshIcon,
@@ -216,11 +215,21 @@ export default function Chatbot() {
         aria-expanded={isOpen}
         aria-controls="nextwave-chatbot-dialog"
         title="Next Wave Assistant"
-        className={`fixed bottom-[120px] right-4 w-11 h-11 flex items-center justify-center bg-[#076C96] text-white rounded-full border border-white/25 shadow-lg hover:bg-[#055475] transition-[transform,opacity,background-color] duration-200 z-50 ${
+        className={`fixed bottom-[140px] right-4 w-[52px] h-[52px] flex items-center justify-center bg-[linear-gradient(135deg,#0E9ED9_0%,#076C96_100%)] text-white rounded-full border border-white/30 shadow-[0_10px_24px_rgba(9,19,69,0.28)] hover:brightness-110 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-200 z-50 ${
           isOpen ? 'scale-95 opacity-0 pointer-events-none invisible' : 'scale-100 opacity-100 visible'
         }`}
       >
-        <ChatIcon size={21} />
+        <svg
+          viewBox="0 0 24 24"
+          width="26"
+          height="26"
+          fill="currentColor"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          aria-hidden="true"
+        >
+          <path d="M12 2.5C6.75 2.5 2.5 6.45 2.5 11.3c0 2.08.78 4 2.09 5.5-.24 1.38-.78 2.6-1.38 3.45-.25.35.04.84.47.77 1.68-.28 3.31-.88 4.46-1.54 1.19.41 2.49.62 3.86.62 5.25 0 9.5-3.95 9.5-8.8S17.25 2.5 12 2.5zm0 4.65c.3 2.35 1.15 3.2 3.5 3.5-2.35.3-3.2 1.15-3.5 3.5-.3-2.35-1.15-3.2-3.5-3.5 2.35-.3 3.2-1.15 3.5-3.5zm4.6 5.95c.14.95.5 1.3 1.45 1.45-.95.14-1.3.5-1.45 1.45-.14-.95-.5-1.3-1.45-1.45.95-.14 1.3-.5 1.45-1.45z" />
+        </svg>
       </button>
 
       <div
@@ -229,7 +238,7 @@ export default function Chatbot() {
         aria-modal={isOpen ? 'true' : undefined}
         aria-hidden={!isOpen}
         aria-label="Next Wave Assistant"
-        className={`fixed bottom-[120px] right-4 w-[min(24rem,calc(100vw-2rem))] h-[500px] max-h-[calc(100vh-140px)] bg-white rounded-[2px] shadow-2xl flex flex-col overflow-hidden transition-[transform,opacity] duration-200 z-50 origin-bottom-right border border-[#262626]/25 ${
+        className={`fixed bottom-[140px] right-4 w-[min(24rem,calc(100vw-2rem))] h-[500px] max-h-[calc(100vh-160px)] bg-white rounded-[2px] shadow-2xl flex flex-col overflow-hidden transition-[transform,opacity] duration-200 z-50 origin-bottom-right border border-[#262626]/25 ${
           isOpen ? 'visible scale-100 opacity-100' : 'invisible scale-95 opacity-0 pointer-events-none'
         }`}
       >

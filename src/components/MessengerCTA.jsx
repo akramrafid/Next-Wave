@@ -6,14 +6,14 @@ const MessengerCTA = () => {
       href="https://www.messenger.com/t/598186176704544"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-[68px] right-4 z-40 flex items-center justify-center w-11 h-11 bg-[#0062E3] hover:bg-[#0052C2] text-white rounded-full border border-white/25 shadow-lg transition-transform duration-150 hover:scale-[1.03] active:scale-[0.97]"
+      className="fixed bottom-[78px] right-4 z-40 flex items-center justify-center w-[52px] h-[52px] bg-[linear-gradient(135deg,#0099FF_0%,#0062E3_55%,#623CEA_100%)] text-white rounded-full border border-white/30 shadow-[0_10px_24px_rgba(0,98,227,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-200"
       aria-label="Chat with us on Messenger"
       title="Chat on Messenger"
     >
       <svg
         viewBox="0 0 24 24"
-        width="21"
-        height="21"
+        width="26"
+        height="26"
         className="fill-current"
         fillRule="evenodd"
         clipRule="evenodd"

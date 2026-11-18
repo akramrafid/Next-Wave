@@ -6,14 +6,14 @@ const WhatsAppCTA = () => {
       href="https://wa.me/8801711204614"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 z-40 flex items-center justify-center w-11 h-11 bg-[#12803E] hover:bg-[#0F6932] text-white rounded-full border border-white/25 shadow-lg transition-transform duration-150 hover:scale-[1.03] active:scale-[0.97]"
+      className="fixed bottom-4 right-4 z-40 flex items-center justify-center w-[52px] h-[52px] bg-[linear-gradient(135deg,#1FA855_0%,#12803E_100%)] text-white rounded-full border border-white/30 shadow-[0_10px_24px_rgba(18,128,62,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-200"
       aria-label="Chat with us on WhatsApp"
       title="Chat on WhatsApp"
     >
       <svg
         viewBox="0 0 24 24"
-        width="22"
-        height="22"
+        width="26"
+        height="26"
         className="fill-current"
         aria-hidden="true"
       >

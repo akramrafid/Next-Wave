@@ -73,7 +73,7 @@ export default function CookieConsent() {
     <aside
       role="region"
       aria-label="Cookie and third-party embed preferences"
-      className="fixed bottom-4 left-4 right-[72px] sm:right-auto sm:w-[25rem] z-40 bg-[#262626] text-white border border-white/25 rounded-[2px] shadow-xl p-5"
+      className="fixed bottom-4 left-4 right-[80px] sm:right-auto sm:w-[25rem] z-40 bg-[#262626] text-white border border-white/25 rounded-[2px] shadow-xl p-5"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex items-center gap-2.5">
