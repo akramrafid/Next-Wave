@@ -42,6 +42,7 @@ export function BrandLogo({ variant = 'light', className = 'h-8 w-auto' }) {
     <img
       src={src}
       alt="Next Wave"
+      decoding="async"
       className={`${className} object-contain select-none`}
     />
   );

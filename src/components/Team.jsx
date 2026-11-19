@@ -190,6 +190,8 @@ const Team = () => {
                 <img
                   src="/Meet our team/Mohammad Abdullah Al Kaisar.jpeg"
                   alt="Abdullah Al Kaisar - Founder & CEO"
+                  loading="lazy"
+                  decoding="async"
                   className="team-portrait-img w-full h-[360px] sm:h-[430px] lg:h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover/portrait:scale-[1.03]"
                 />
               </div>
@@ -204,6 +206,8 @@ const Team = () => {
                       <img
                         src="/Meet our team/Verified badge sign.png"
                         alt=""
+                        loading="lazy"
+                        decoding="async"
                         className="w-4 h-4 shrink-0"
                       />
                     </div>

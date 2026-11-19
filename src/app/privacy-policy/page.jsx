@@ -1,10 +1,13 @@
 import React from 'react';
 import LegalPage from '@/components/LegalPage';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Privacy Policy | Next Wave',
   description:
     'How Next Wave (NextWave 360 Solutions) collects, uses, processes, and protects enquiry, AI assistant, and third-party embed data.',
+  alternates: { canonical: '/privacy-policy' },
 };
 
 const sections = [

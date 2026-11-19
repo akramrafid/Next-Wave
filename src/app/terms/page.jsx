@@ -1,10 +1,13 @@
 import React from 'react';
 import LegalPage from '@/components/LegalPage';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Terms & Conditions | Next Wave',
   description:
     'Terms governing website access, intellectual property, consultation enquiries, and use of the Next Wave AI assistant.',
+  alternates: { canonical: '/terms' },
 };
 
 const sections = [

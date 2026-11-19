@@ -32,6 +32,7 @@ const Clients = () => {
                   style={clientLogoStyle(logo)}
                   className={`object-contain shrink-0 ${logo.roundedBadge ? 'rounded-[2px]' : ''}`}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -83,6 +84,7 @@ const Clients = () => {
                   style={clientLogoStyle(logo)}
                   className={`object-contain shrink-0 ${logo.blendMultiply ? 'mix-blend-multiply' : ''}`}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}

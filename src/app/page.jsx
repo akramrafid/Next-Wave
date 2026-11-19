@@ -1,7 +1,5 @@
-'use client';
-
-import React, { useEffect } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
+import HomeScrollManager from '@/components/HomeScrollManager';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
 import SelectedWork from '@/components/SelectedWork';
@@ -13,41 +11,13 @@ import Team from '@/components/Team';
 import Insights from '@/components/Insights';
 import CTA from '@/components/CTA';
 
+export const dynamic = 'force-static';
+
 export default function HomePage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.hash) {
-      const id = window.location.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      try {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
-        ScrollTrigger.clearScrollMemory();
-      } catch (e) {}
-      
-      try {
-        document.querySelectorAll('.pin-spacer').forEach(el => {
-          const child = el.children[0];
-          if (child) {
-            child.removeAttribute('style');
-            el.parentNode?.insertBefore(child, el);
-          }
-          el.remove();
-        });
-      } catch (e) {}
-    };
-  }, []);
-
   return (
     <>
+      <HomeScrollManager />
+
       {/* 1. Understand NextWave */}
       <Hero />
 

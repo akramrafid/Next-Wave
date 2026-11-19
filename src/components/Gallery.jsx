@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeftIcon, ChevronRightIcon, CloseCircleIcon } from './Icons';
 
 const galleryItems = [
@@ -59,22 +58,6 @@ const Gallery = () => {
   const selectedItem = selectedIndex !== null ? galleryItems[selectedIndex] : null;
 
   useEffect(() => {
-    try {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-      ScrollTrigger.clearScrollMemory();
-    } catch (e) {}
-
-    try {
-      document.querySelectorAll('.pin-spacer').forEach((el) => {
-        const child = el.children[0];
-        if (child) {
-          child.removeAttribute('style');
-          el.parentNode?.insertBefore(child, el);
-        }
-        el.remove();
-      });
-    } catch (e) {}
-
     window.scrollTo(0, 0);
   }, []);
 
@@ -133,6 +116,7 @@ const Gallery = () => {
                 alt={item.alt}
                 className="w-full h-auto block hover:scale-[1.02] transition-transform duration-500 ease-out"
                 loading="lazy"
+                decoding="async"
               />
             </button>
           ))}

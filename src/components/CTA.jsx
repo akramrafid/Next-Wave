@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BrandWaveOutline } from './BrandWatermark';
-import { ArrowUpRightIcon, ChatCallIcon } from './Icons';
+import { ArrowUpRightIcon, WhatsAppIcon } from './Icons';
 
 const CTA = () => {
   return (
@@ -37,7 +37,7 @@ const CTA = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 border border-white/45 hover:border-white hover:bg-white/10 text-white px-8 py-4 rounded-[2px] font-poppins font-medium text-xs sm:text-sm tracking-[0.12em] uppercase transition-colors duration-150 min-h-[48px]"
             >
-              <ChatCallIcon size={18} />
+              <WhatsAppIcon size={19} />
               <span>WhatsApp Us</span>
             </a>
           </div>

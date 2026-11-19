@@ -2,11 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   AlertIcon,
   ArrowUpRightIcon,
-  ChatCallIcon,
   ChevronDownIcon,
   GlobalIcon,
   MailIcon,
@@ -14,6 +12,7 @@ import {
   PhoneIcon,
   RestartIcon,
   SendIcon,
+  WhatsAppIcon,
 } from '@/components/Icons';
 import {
   COOKIE_CHANGE_EVENT,
@@ -47,6 +46,10 @@ const ContactClient = () => {
   const [submitError, setSubmitError] = useState('');
   const [receipt, setReceipt] = useState(null);
   const [mapApproved, setMapApproved] = useState(false);
+  const [mapInView, setMapInView] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+  const mapContainerRef = useRef(null);
 
   const nameRef = useRef(null);
   const companyRef = useRef(null);
@@ -56,30 +59,40 @@ const ContactClient = () => {
   const consentRef = useRef(null);
 
   useEffect(() => {
-    try {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-      ScrollTrigger.clearScrollMemory();
-    } catch (e) {}
-    try {
-      document.querySelectorAll('.pin-spacer').forEach((el) => {
-        const child = el.children[0];
-        if (child) {
-          child.removeAttribute('style');
-          el.parentNode?.insertBefore(child, el);
-        }
-        el.remove();
-      });
-    } catch (e) {}
     window.scrollTo(0, 0);
 
     setMapApproved(readCookieConsent() === 'all');
     const onConsentChange = (e) => {
       if (e.detail === 'all') setMapApproved(true);
-      else if (e.detail === 'essential') setMapApproved(false);
+      else if (e.detail === 'essential') {
+        setMapApproved(false);
+        setMapLoaded(false);
+      }
     };
     window.addEventListener(COOKIE_CHANGE_EVENT, onConsentChange);
     return () => window.removeEventListener(COOKIE_CHANGE_EVENT, onConsentChange);
   }, []);
+
+  useEffect(() => {
+    if (!mapApproved || mapInView) return;
+    const node = mapContainerRef.current;
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setMapInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setMapInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '260px 0px' }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [mapApproved, mapInView]);
 
   const hasDirtyInput =
     Boolean(
@@ -312,7 +325,7 @@ const ContactClient = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#12803E] hover:bg-[#0F6932] text-white px-5 min-h-[48px] rounded-[2px] font-poppins font-semibold text-xs uppercase tracking-[0.12em] transition-colors"
                   >
-                    <ChatCallIcon size={17} />
+                    <WhatsAppIcon size={18} />
                     <span>Continue on WhatsApp</span>
                   </a>
                   <button
@@ -600,20 +613,39 @@ const ContactClient = () => {
           </div>
         </div>
 
-        {/* Consent-Gated Lazy Google Maps Frame */}
-        <div className="w-full min-h-[380px] md:min-h-[440px] border border-[#CCCCCC] bg-white overflow-hidden">
+        {/* Consent-Gated Viewport-Deferred Google Maps Frame */}
+        <div
+          ref={mapContainerRef}
+          className="relative w-full min-h-[380px] md:min-h-[440px] border border-[#CCCCCC] bg-white overflow-hidden"
+        >
           {mapApproved ? (
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.47!2d91.8232174!3d22.3579668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9c309f91fad%3A0xaf671968541e87d7!2sNextWave%20360%20Solutions!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
-              width="100%"
-              height="440"
-              loading="lazy"
-              style={{ border: 0, display: 'block' }}
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-[380px] md:h-[440px]"
-              title="NextWave 360 Solutions Location"
-            />
+            <div className="relative w-full h-[380px] md:h-[440px] bg-[#F7F7F7]">
+              {!mapLoaded && (
+                <div
+                  aria-hidden="true"
+                  className="skeleton-shimmer absolute inset-0 flex flex-col items-center justify-center gap-2 text-xs font-poppins uppercase tracking-[0.12em] text-[#262626]/65"
+                >
+                  <MapPointIcon size={28} className="text-[#076C96]" />
+                  <span>Loading interactive office map…</span>
+                </div>
+              )}
+              {mapInView && (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.47!2d91.8232174!3d22.3579668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9c309f91fad%3A0xaf671968541e87d7!2sNextWave%20360%20Solutions!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  width="100%"
+                  height="440"
+                  loading="lazy"
+                  onLoad={() => setMapLoaded(true)}
+                  style={{ border: 0, display: 'block' }}
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className={`relative z-10 w-full h-[380px] md:h-[440px] transition-opacity duration-300 ${
+                    mapLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  title="NextWave 360 Solutions Location"
+                />
+              )}
+            </div>
           ) : (
             <div className="h-[380px] md:h-[440px] bg-[#F7F7F7] p-8 sm:p-12 flex flex-col items-center justify-center text-center gap-5">
               <MapPointIcon size={36} className="text-[#076C96]" />
@@ -634,6 +666,7 @@ const ContactClient = () => {
                   onClick={() => {
                     saveCookieConsent('all');
                     setMapApproved(true);
+                    setMapInView(true);
                   }}
                   className="inline-flex items-center justify-center gap-2 bg-[#262626] hover:bg-[#076C96] text-white px-6 min-h-[48px] rounded-[2px] font-poppins font-semibold text-xs uppercase tracking-[0.12em] transition-colors"
                 >

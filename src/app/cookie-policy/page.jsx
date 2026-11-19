@@ -2,10 +2,13 @@ import React from 'react';
 import LegalPage from '@/components/LegalPage';
 import CookieResetButton from '@/components/CookieResetButton';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Cookie Policy | Next Wave',
   description:
     'Cookie, local storage, and third-party embed disclosure for nextwaves.agency, with interactive preference controls.',
+  alternates: { canonical: '/cookie-policy' },
 };
 
 const sections = [

@@ -9,22 +9,22 @@ import { BrandWaveOutline } from './BrandWatermark';
 
 const showcaseFrames = [
   {
-    src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop',
+    src: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=75&w=680&auto=format&fit=crop',
     alt: 'AV Production & Cinema Camera Rig',
     label: 'AV Production',
   },
   {
-    src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop',
+    src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=75&w=680&auto=format&fit=crop',
     alt: 'Luxury Packaging & Brand Identity',
     label: 'Brand & Packaging',
   },
   {
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=680&auto=format&fit=crop',
     alt: 'Digital Platform & Analytics Experience',
     label: 'Digital Experience',
   },
   {
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop',
+    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=75&w=680&auto=format&fit=crop',
     alt: 'Live Auditorium & Stage Activation',
     label: 'Live Activation',
   },
@@ -103,7 +103,7 @@ const Hero = () => {
 
           {/* Right Column: Architectural Specimen Grid (single col on mobile to avoid label truncation) */}
           <div className="lg:col-span-6 border-t lg:border-t-0 border-white/20 grid grid-cols-1 sm:grid-cols-2 bg-white/20 gap-px">
-            {showcaseFrames.map((frame) => (
+            {showcaseFrames.map((frame, idx) => (
               <Link
                 key={frame.label}
                 href="/gallery"
@@ -113,6 +113,10 @@ const Hero = () => {
                   <img
                     src={frame.src}
                     alt={frame.alt}
+                    width={680}
+                    height={510}
+                    fetchPriority={idx < 2 ? 'high' : 'auto'}
+                    decoding="async"
                     className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
@@ -161,6 +165,7 @@ const Hero = () => {
                         style={clientLogoStyle(logo)}
                         className={`object-contain shrink-0 ${logo.roundedBadge ? 'rounded-[2px]' : ''}`}
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   ))}

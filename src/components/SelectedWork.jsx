@@ -154,6 +154,7 @@ function PortfolioProjectCard({ project, featured = false, dimmed = false, onHov
             src={project.coverUrl}
             alt={project.coverAlt}
             loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="sw-cover-parallax relative z-10 w-full h-[106%] -top-[3%] object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] motion-reduce:top-0 motion-reduce:h-full motion-reduce:transform-none"
           />

@@ -119,20 +119,34 @@ const Navbar = () => {
           <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-8 xl:gap-10">
             {navLinks.map((link) => {
               const isActive = link.type === 'link' && pathname === link.target;
+              const linkClass = `header-nav-link ${
+                useLightChrome
+                  ? isActive
+                    ? 'text-[#076C96]'
+                    : 'text-[#262626] hover:text-[#076C96]'
+                  : isActive
+                    ? 'text-white'
+                    : 'text-white/90 hover:text-white'
+              }`;
+              if (link.type === 'link') {
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.target}
+                    data-active={isActive ? 'true' : 'false'}
+                    className={linkClass}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
               return (
                 <a
                   key={link.label}
                   href={link.target}
                   data-active={isActive ? 'true' : 'false'}
-                  className={`header-nav-link ${
-                    useLightChrome
-                      ? isActive
-                        ? 'text-[#076C96]'
-                        : 'text-[#262626] hover:text-[#076C96]'
-                      : isActive
-                        ? 'text-white'
-                        : 'text-white/90 hover:text-white'
-                  }`}
+                  className={linkClass}
                   onClick={(e) => handleNavClick(e, link)}
                 >
                   {link.label}
@@ -184,17 +198,29 @@ const Navbar = () => {
           className="fixed left-0 right-0 z-50 bg-white border-b border-[#CCCCCC] shadow-xl lg:hidden"
         >
           <nav aria-label="Mobile navigation links" className="max-w-[1560px] mx-auto px-6 py-4 flex flex-col divide-y divide-[#CCCCCC]/70">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.target}
-                className="py-3.5 text-sm font-poppins font-medium uppercase tracking-[0.14em] text-[#262626] hover:text-[#076C96] flex items-center justify-between transition-colors"
-                onClick={(e) => handleNavClick(e, link)}
-              >
-                <span>{link.label}</span>
-                <ArrowUpRightIcon size={16} className="text-[#076C96]" />
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.type === 'link' ? (
+                <Link
+                  key={link.label}
+                  href={link.target}
+                  className="py-3.5 text-sm font-poppins font-medium uppercase tracking-[0.14em] text-[#262626] hover:text-[#076C96] flex items-center justify-between transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span>{link.label}</span>
+                  <ArrowUpRightIcon size={16} className="text-[#076C96]" />
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.target}
+                  className="py-3.5 text-sm font-poppins font-medium uppercase tracking-[0.14em] text-[#262626] hover:text-[#076C96] flex items-center justify-between transition-colors"
+                  onClick={(e) => handleNavClick(e, link)}
+                >
+                  <span>{link.label}</span>
+                  <ArrowUpRightIcon size={16} className="text-[#076C96]" />
+                </a>
+              )
+            )}
             <div className="pt-4 pb-2">
               <Link
                 href="/contact"
