@@ -94,7 +94,7 @@ export default function CookieConsent() {
       </div>
 
       <p className="font-sans text-xs text-[#CCCCCC] leading-relaxed mb-4">
-        Next Wave uses no first-party advertising trackers. Selecting Essential Only pauses external third-party embeds (Behance previews and Google Maps).{' '}
+        Next Wave uses no first-party advertising trackers. Accepting all enables optional third-party embeds such as interactive Google Maps on our Contact page.{' '}
         <Link
           href="/cookie-policy"
           className="text-[#0E9ED9] hover:text-white underline underline-offset-4 font-medium transition-colors"

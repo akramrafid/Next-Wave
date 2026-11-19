@@ -39,11 +39,6 @@ const sections = [
     ],
     bullets: [
       {
-        label: 'Behance Project Embeds (Home · Selected Work)',
-        detail:
-          'Selected Work includes embedded Behance project cards hosted by Adobe Behance. Selecting Essential Only pauses these iframes until you choose to load them.',
-      },
-      {
         label: 'Google Maps Embed (/contact)',
         detail:
           'Our Contact page includes an interactive office location map hosted by Google Maps. When enabled via Accept All or by clicking Load Interactive Map, Google may set functional and security cookies under Google’s terms.',
@@ -51,7 +46,7 @@ const sections = [
       {
         label: 'External Messaging & Social Links',
         detail:
-          'WhatsApp, Facebook Messenger, and social profile buttons only link outward; no tracking scripts run on our pages before you click them.',
+          'WhatsApp, Facebook Messenger, Behance, and social profile buttons only link outward; no tracking scripts run on our pages before you click them.',
       },
     ],
   },
