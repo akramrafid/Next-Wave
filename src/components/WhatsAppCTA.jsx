@@ -3,7 +3,7 @@ import React from 'react';
 const WhatsAppCTA = () => {
   return (
     <a
-      href="https://wa.me/8801711204614"
+      href="https://wa.me/@nextwaves.agency"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-4 right-4 z-40 flex items-center justify-center w-[52px] h-[52px] bg-[linear-gradient(135deg,#1FA855_0%,#12803E_100%)] text-white rounded-full border border-white/30 shadow-[0_10px_24px_rgba(18,128,62,0.3)] hover:brightness-110 hover:-translate-y-0.5 hover:scale-105 active:scale-95 transition-all duration-200"

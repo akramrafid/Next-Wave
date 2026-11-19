@@ -89,6 +89,16 @@ section[id] {
   animation-play-state: paused;
 }
 
+.behance-marquee {
+  display: flex;
+  width: max-content;
+  animation: clientMarquee 36s linear infinite;
+}
+
+.behance-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Skeleton Shimmer for Loading States */
 @keyframes shimmerWave {
   0% {
@@ -115,6 +125,7 @@ section[id] {
     scroll-behavior: auto;
   }
   .hero-client-marquee,
+  .behance-marquee,
   .skeleton-shimmer {
     animation: none !important;
   }

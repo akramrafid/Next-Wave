@@ -42,7 +42,7 @@ const sections = [
     id: 'third-party-and-law',
     heading: '5. External Links & Governing Law',
     paragraphs: [
-      'Links to external websites and platforms (including WhatsApp, Facebook Messenger, LinkedIn, Instagram, YouTube, and Google Maps) are provided for convenience. Next Wave is not responsible for the content or practices of external sites.',
+      'Links to external websites and platforms (including WhatsApp, Facebook Messenger, LinkedIn, Instagram, TikTok, and Google Maps) are provided for convenience. Next Wave is not responsible for the content or practices of external sites.',
       'To the fullest extent permitted by law, this website is provided “as is.” These Terms are governed by the applicable laws of Bangladesh, and questions may be directed to info.nextwaves@gmail.com.',
     ],
   },

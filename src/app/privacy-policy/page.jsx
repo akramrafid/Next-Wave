@@ -36,7 +36,7 @@ const sections = [
       {
         label: 'Third-Party Channels',
         detail:
-          'If you click WhatsApp, Facebook Messenger, LinkedIn, Instagram, or YouTube links—or pre-fill a WhatsApp consultation handoff after submitting the Contact form—that communication moves directly onto those third-party platforms.',
+          'If you click WhatsApp, Facebook Messenger, LinkedIn, Instagram, or TikTok links—or pre-fill a WhatsApp consultation handoff after submitting the Contact form—that communication moves directly onto those third-party platforms.',
       },
       {
         label: 'Technical Logs',
